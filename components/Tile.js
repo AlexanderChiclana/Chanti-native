@@ -26,6 +26,7 @@ class Tile extends Component {
         this.setState({
           zIndex: 0
         })
+        console.log(evt)
         position.setValue({ x: 0, y: 0 })
       },
     })

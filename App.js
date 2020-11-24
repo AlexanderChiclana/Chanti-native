@@ -28,6 +28,9 @@ export default function App() {
         <Tile />
       </View>
       {/* <StatusBar style="auto" /> */}
+      <View style={styles.sequencer}>
+
+      </View>
     </SafeAreaView>
   )
 }
@@ -42,7 +45,15 @@ const styles = StyleSheet.create({
     // flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    zIndex: 100,
     // backgroundColor: '#68BEF6',
     // height: '80%'
+  },
+  sequencer: {
+    width: '100%',
+    // position: 'absolute',
+    zIndex: 0,
+    height: 200,
+    backgroundColor: 'blue'
   }
 })
