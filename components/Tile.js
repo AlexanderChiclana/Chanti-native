@@ -20,9 +20,9 @@ class Tile extends Component {
         })
         position.setValue({ x: gesture.dx, y: gesture.dy })
         // demo code for hovering confirm and firing off function
-        this.props.isDropZone(gesture)
-          ? this.props.setSequencerColor('purple')
-          : this.props.setSequencerColor('blue')
+        // this.props.isDropZone(gesture)
+        //   ? this.props.setSequencerColor('purple')
+        //   : this.props.setSequencerColor('blue')
       },
       onPanResponderRelease: (evt, gesture) => {
         this.setState({
@@ -30,7 +30,7 @@ class Tile extends Component {
         })
         // console.log(gesture)
         // demo code for confirming drop target and firing off function
-        this.props.isDropZone(gesture) && this.props.setSequencerColor('red')
+        // this.props.isDropZone(gesture) && this.props.setSequencerColor('red')
         // resetting the tile back to original position
         position.setValue({ x: 0, y: 0 })
       }
@@ -66,21 +66,21 @@ export default Tile
 
 const styles = StyleSheet.create({
   empty: {
-    height: 60,
+    height: 70,
     width: '20%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 15,
+    marginBottom: 5,
   },
   container: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
     borderRadius: 10,
-    height: 60,
-    width: 60,
+    height: 70,
+    width: 70,
     borderRadius: 5,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: 'black'
 
   },

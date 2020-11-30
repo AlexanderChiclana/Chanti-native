@@ -2,10 +2,14 @@ import { StatusBar } from 'expo-status-bar'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import Tile from './components/Tile.js'
+import Sequencer from './components/Sequencer.js'
+import MediaControls from './components/MediaControls.js'
+
+import {colors} from '../chanti-native-client/theme.js'
 
 export default function App() {
   const [sequencerPosition, setSequencerPosition] = useState(null)
-  const [sequencerColor, setSequencerColor] = useState('blue')
+  // const [sequencerColor, setSequencerColor] = useState('blue')
 
   const isDropZone = (gesture) => {
     const dz = sequencerPosition;
@@ -13,41 +17,44 @@ export default function App() {
 }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.app}>
       <View style={styles.tileContainer}>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
-        <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
+        <Tile isDropZone={isDropZone}/>
         {/* <View style={{height: 60, width: 60}}/> */}
       </View>
       {/* <StatusBar style="auto" /> */}
       <View
-        style={{...styles.sequencer, backgroundColor: sequencerColor}}
+        style={styles.sequencer}
         onLayout={event => setSequencerPosition(event.nativeEvent.layout)}
-      ></View>
+      >
+        <Sequencer />
+        <MediaControls />
+      </View>
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
+  app: {
+    backgroundColor: colors.primaryLight,
     height: '100%'
   },
   tileContainer: {
@@ -62,6 +69,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 0,
     height: 200,
-    // backgroundColor: 'blue'
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: colors.primary,
   }
 })
