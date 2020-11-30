@@ -26,7 +26,8 @@ class Tile extends Component {
         this.setState({
           zIndex: 0
         })
-        console.log(evt)
+        // console.log(gesture)
+        this.props.isDropZone(gesture) && this.props.setSequencerColor('red') 
         position.setValue({ x: 0, y: 0 })
       },
     })
