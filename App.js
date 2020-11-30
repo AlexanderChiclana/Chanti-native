@@ -34,6 +34,7 @@ export default function App() {
         <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
         <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
         <Tile isDropZone={isDropZone} setSequencerColor={setSequencerColor}/>
+        {/* <View style={{height: 60, width: 60}}/> */}
       </View>
       {/* <StatusBar style="auto" /> */}
       <View
@@ -48,16 +49,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     height: '100%'
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   tileContainer: {
-    // flex: 1,
     flexDirection: 'row',
+    // justifyContent: 'space-around',
     flexWrap: 'wrap',
     zIndex: 100
-    // backgroundColor: '#68BEF6',
-    // height: '80%'
   },
   sequencer: {
     width: '100%',
