@@ -10,7 +10,7 @@ import {colors} from '../theme.js'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 
-export default function TilePage() {
+export default function TilePage({}) {
   const [sequencerPosition, setSequencerPosition] = useState(null)
   // const [sequencerColor, setSequencerColor] = useState('blue')
 

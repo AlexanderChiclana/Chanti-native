@@ -10,22 +10,51 @@ import { colors } from '../chanti-native-client/theme.js'
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createDrawerNavigator } from '@react-navigation/drawer'
 
-const Stack = createStackNavigator()
+const Drawer = createDrawerNavigator()
 
 const Tab = createMaterialTopTabNavigator()
 
 export default function App() {
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator> */}
-         <Tab.Navigator swipeEnabled={false}>
+      {/* <Tab.Navigator swipeEnabled={false}>
           <Tab.Screen name="Torah" component={TilePage} />
           <Tab.Screen name="Phrases" component={TilePage} />
-        </Tab.Navigator>
-      {/* </Stack.Navigator> */}
-      
+        </Tab.Navigator> */}
+
+      <Drawer.Navigator>
+        <Drawer.Screen name="Torah" component={TabView} initialParams={{systemName: 'Torah'}}/>
+        <Drawer.Screen name="Haftarah" component={TabView} initialParams={{systemName: 'Hafrarah'}}/>
+        <Drawer.Screen name="HHD" component={TabView} initialParams={{systemName: 'HHD'}}/>
+        <Drawer.Screen name="Ruth" component={TabView} initialParams={{systemName: 'Ruth'}}/>
+        <Drawer.Screen name="Lamentation" component={TabView} initialParams={{systemName: 'Lamentation'}}/>
+        <Drawer.Screen name="Esther" component={TabView} initialParams={{systemName: 'Esther'}}/>
+
+      </Drawer.Navigator>
     </NavigationContainer>
   )
 }
+
+const TabView = ({route}) => {
+  let system = route.params.systemName
+  return ( 
+        <React.Fragment>
+          {/* <SafeAreaView style={styles.navbar}>
+            <Text>Hey</Text>
+          </SafeAreaView> */}
+        <Tab.Navigator swipeEnabled={false}>
+           {/* <Tab.Screen name={'books'} component={TilePage} initialParams={system}/> */}
+          <Tab.Screen name={system} component={TilePage} initialParams={system}/>
+          <Tab.Screen name="Phrases" component={TilePage} initialParams={system}/>
+        </Tab.Navigator> 
+        </React.Fragment>
+   );
+}
+ 
+const styles = StyleSheet.create({
+  navbar: {
+    height: 50,
+  }
+})
