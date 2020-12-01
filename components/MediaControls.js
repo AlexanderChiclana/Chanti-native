@@ -40,7 +40,7 @@ import {
 // width: 80,
 // `
 
-const MediaWidget = (props) => {
+const MediaWidget = ({navigation}) => {
 //   const { setSequencePlayStatus, sequencePlayStatus, setCurrentSound } = props
 
 //   const handlePlayPause = () => {
@@ -57,6 +57,7 @@ const MediaWidget = (props) => {
 //     setSequencePlayStatus('STOPPED')
 //   }
 
+// console.log(navigation)
   return (
     <View style={styles.mediaWidgetContainer}>
       <View style={styles.bar}>
@@ -75,7 +76,7 @@ const MediaWidget = (props) => {
 
 const styles = StyleSheet.create({
     mediaWidgetContainer: {
-        width: 250,
+        width: 220,
         justifyContent: 'center',
     },
     bar:{

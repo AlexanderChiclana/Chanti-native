@@ -56,13 +56,16 @@ export default function TilePage({}) {
 const styles = StyleSheet.create({
   app: {
     backgroundColor: colors.primaryLight,
-    height: '100%'
+    height: '100%',
   },
   tileContainer: {
     flexDirection: 'row',
     // justifyContent: 'space-around',
+    height: '100%',
     flexWrap: 'wrap',
     marginTop: 10,
+    marginRight: 5,
+    marginLeft: 5,
     zIndex: 100,
   },
   sequencer: {

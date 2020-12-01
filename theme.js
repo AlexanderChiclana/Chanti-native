@@ -1,11 +1,16 @@
 export const colors = {
     primary: '#0A5687',
     primaryLight: '#68BEF6',
+    primaryDark:'#06456E',
     secondary: '#F3791C',
     secondaryLight: '#FAD161',
     offBlack: '#4E4E4E',
     black: '#1B1B1B',
     white: '#FFFFFF' 
+}
+
+export const tileSize = {
+    medium: 70,
 }
 
 export const fontSize = {

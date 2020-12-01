@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import Tile from './components/Tile.js'
 import Sequencer from './components/Sequencer.js'
@@ -9,6 +9,10 @@ import TilePage from './pages/TilePage.js'
 import { colors } from '../chanti-native-client/theme.js'
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
+
 import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 
@@ -37,16 +41,20 @@ export default function App() {
   )
 }
 
-const TabView = ({route}) => {
+const TabView = ({route, navigation}) => {
+  console.log(navigation)
   let system = route.params.systemName
+
+  const NavContext = React.createContext(navigation)
+
   return ( 
         <React.Fragment>
-          {/* <SafeAreaView style={styles.navbar}>
-            <Text>Hey</Text>
-          </SafeAreaView> */}
+          <SafeAreaView style={styles.navbar}>
+            <Text style={styles.title}>{system}</Text>
+          </SafeAreaView>
         <Tab.Navigator swipeEnabled={false}>
            {/* <Tab.Screen name={'books'} component={TilePage} initialParams={system}/> */}
-          <Tab.Screen name={system} component={TilePage} initialParams={system}/>
+          <Tab.Screen name="Symbols" component={TilePage} initialParams={system}/>
           <Tab.Screen name="Phrases" component={TilePage} initialParams={system}/>
         </Tab.Navigator> 
         </React.Fragment>
@@ -55,6 +63,18 @@ const TabView = ({route}) => {
  
 const styles = StyleSheet.create({
   navbar: {
-    height: 50,
+    height: 70,
+    backgroundColor: colors.primaryDark,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#033454',
+    borderBottomWidth: 3,
+    
+    
+  },
+  title:{
+    fontSize: 20,
+    color: 'white',
+    fontWeight: "600",
   }
 })

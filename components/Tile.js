@@ -8,6 +8,8 @@ import {
   Animated
 } from 'react-native'
 
+import { tileSize, colors } from '../theme.js'
+
 class Tile extends Component {
   constructor(props) {
     super(props)
@@ -66,7 +68,7 @@ export default Tile
 
 const styles = StyleSheet.create({
   empty: {
-    height: 70,
+    height: tileSize.medium,
     width: '20%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -77,11 +79,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
     borderRadius: 10,
-    height: 70,
-    width: 70,
-    borderRadius: 5,
+    height:  tileSize.medium,
+    width: tileSize.medium,
+    borderRadius: 8,
     borderWidth: 1,
-    borderColor: 'black'
+    borderColor: colors.primary,
 
   },
   letter: {
