@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@freakycoder/react-native-bounceable": "^0.2.4",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.2",
     "@react-navigation/drawer": "^5.11.4",
@@ -21,14 +22,21 @@
     "react-devtools": "^4.10.0",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
+    "react-native-apple-header": ">= 0.1.0",
+    "react-native-classic-header": ">= 0.1.0",
     "react-native-draggable": "^3.3.0",
     "react-native-gesture-handler": "~1.7.0",
+    "react-native-gorgeous-header": ">= 0.1.0",
+    "react-native-modern-header": ">= 0.1.0",
     "react-native-paper": "^4.4.1",
+    "react-native-profile-header": ">= 0.1.0",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-tab-view": "^2.15.2",
-    "react-native-web": "~0.13.12"
+    "react-native-vector-icons": "^7.1.0",
+    "react-native-web": "~0.13.12",
+    "tslib": "^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"
