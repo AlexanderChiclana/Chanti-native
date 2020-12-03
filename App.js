@@ -7,6 +7,7 @@ import MediaControls from './components/MediaControls.js'
 import Header from './components/Header.js'
 
 import TilePage from './pages/TilePage.js'
+import PhrasePage from './pages/PhrasePage.js'
 
 import { colors } from '../chanti-native-client/theme.js'
 
@@ -24,10 +25,6 @@ const Tab = createMaterialTopTabNavigator()
 export default function App() {
   return (
     <NavigationContainer>
-      {/* <Tab.Navigator swipeEnabled={false}>
-          <Tab.Screen name="Torah" component={TilePage} />
-          <Tab.Screen name="Phrases" component={TilePage} />
-        </Tab.Navigator> */}
 
       <Drawer.Navigator>
         <Drawer.Screen
@@ -81,7 +78,6 @@ const TabView = ({ route, navigation }) => {
           style: { backgroundColor: colors.primary }
         }}
       >
-        {/* <Tab.Screen name={'books'} component={TilePage} initialParams={system}/> */}
         <Tab.Screen
           name="Symbols"
           component={TilePage}
@@ -89,7 +85,7 @@ const TabView = ({ route, navigation }) => {
         />
         <Tab.Screen
           name="Phrases"
-          component={TilePage}
+          component={PhrasePage}
           initialParams={system}
         />
       </Tab.Navigator>

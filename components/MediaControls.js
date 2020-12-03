@@ -5,70 +5,29 @@ import {
   colors,
   borders
 } from '../theme.js'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
-
-
-// const Bar = styled.div`
-//   padding: 0 10 0 10,
-//   border-radius: 120,
-//   border: ${borders.medium},
-//   background-color: ${colors.primaryLight},
-//   display: flex,
-//   height: 115,
-//   width: 100%,
-//   align-items: center,
-//   justify-content: space-between,
-// `
-
-// const PlayButton = styled.div`
-//   background-color: ${colors.secondary},
-//   border-radius: 50%,
-//   border: ${borders.medium},
-//   height: 200,
-//   width: 200,
-//   display: flex,
-//   justify-content: center,
-//   align-items: center,
-// `
-
-
-// const MediaButton = styled.div`
-// background-color: ${colors.offBlack},
-// border-radius: 50%,
-// border: ${borders.medium},
-// height: 80,
-// width: 80,
-// `
 
 const MediaWidget = ({navigation}) => {
-//   const { setSequencePlayStatus, sequencePlayStatus, setCurrentSound } = props
 
-//   const handlePlayPause = () => {
-//     if(sequencePlayStatus === 'PLAYING'){
-//       setSequencePlayStatus('PAUSED')
-//     } else {
-//       setSequencePlayStatus('PLAYING')
-//     }
-//   }
-
-//   const handleStop = () => {
-//     console.log('stopping')
-//     setCurrentSound(0)
-//     setSequencePlayStatus('STOPPED')
-//   }
-
-// console.log(navigation)
   return (
     <View style={styles.mediaWidgetContainer}>
       <View style={styles.bar}>
-        <View style={styles.mediaButton}/> 
-        {/* <PlayButton sequencePlayStatus={sequencePlayStatus} onClick={() => handlePlayPause()}>
-          {sequencePlayStatus}
-        </PlayButton> */}
+        <View style={styles.mediaButton}>
+        <Icon name="trash" size={30} color={'white'} />
+
+            </View> 
+    
         <View style={styles.playButton}>
 
+        <Icon name="play-circle" size={90} color={colors.secondary} />
+
         </View>
-        <View style={styles.mediaButton}/> 
+
+        <View style={styles.mediaButton}>
+        <Icon name="stop" size={25} color={'white'} />
+
+            </View>         
       </View>
     </View>
   )
@@ -76,7 +35,7 @@ const MediaWidget = ({navigation}) => {
 
 const styles = StyleSheet.create({
     mediaWidgetContainer: {
-        width: 220,
+        width: 260,
         justifyContent: 'center',
     },
     bar:{
@@ -95,12 +54,14 @@ const styles = StyleSheet.create({
     },
     mediaButton:{
         backgroundColor: colors.offBlack,
+        alignItems: 'center',
+        justifyContent: 'center',
         borderRadius: 60,
         height: 50,
         width: 50,
     },
     playButton:{
-        backgroundColor: colors.secondary,
+        backgroundColor: 'white',
         borderRadius: 50,
         height: 90,
         width: 90,

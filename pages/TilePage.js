@@ -5,22 +5,22 @@ import Tile from '../components/Tile.js'
 import Sequencer from '../components/Sequencer.js'
 import MediaControls from '../components/MediaControls.js'
 
-import {colors} from '../theme.js'
+import { colors } from '../theme.js'
 
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
 export default function TilePage({}) {
   const [sequencerPosition, setSequencerPosition] = useState(null)
   // const [sequencerColor, setSequencerColor] = useState('blue')
 
-  const isDropZone = (gesture) => {
-    const dz = sequencerPosition;
-    return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height;
-}
+  const isDropZone = gesture => {
+    const dz = sequencerPosition
+    return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height
+  }
 
   return (
-    <SafeAreaView style={styles.app}>
+    <View style={styles.app}>
+      <View style={styles.tileFlexContainer}>
       <View style={styles.tileContainer}>
         <Tile isDropZone={isDropZone}/>
         <Tile isDropZone={isDropZone}/>
@@ -42,6 +42,7 @@ export default function TilePage({}) {
         <Tile isDropZone={isDropZone}/>
         <Tile isDropZone={isDropZone}/>
       </View>
+      </View>
       <View
         style={styles.sequencer}
         onLayout={event => setSequencerPosition(event.nativeEvent.layout)}
@@ -49,7 +50,8 @@ export default function TilePage({}) {
         <Sequencer />
         <MediaControls />
       </View>
-    </SafeAreaView>
+
+    </View>
   )
 }
 
@@ -57,25 +59,31 @@ const styles = StyleSheet.create({
   app: {
     backgroundColor: colors.primaryLight,
     height: '100%',
+    flex: 1,
+  },
+  tileFlexContainer:{
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 100,
+
   },
   tileContainer: {
     flexDirection: 'row',
-    // justifyContent: 'space-around',
-    height: '100%',
     flexWrap: 'wrap',
-    marginTop: 10,
     marginRight: 5,
     marginLeft: 5,
-    zIndex: 100,
   },
   sequencer: {
     width: '100%',
-    position: 'absolute',
     bottom: 0,
     zIndex: 0,
     height: 200,
     alignItems: 'center',
     justifyContent: 'space-around',
     backgroundColor: colors.primary,
+    alignSelf: 'stretch',
+
   }
 })
