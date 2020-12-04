@@ -7,10 +7,7 @@ import MediaControls from '../components/MediaControls.js'
 
 import { colors } from '../theme.js'
 
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-
-export default function TilePage({route}) {
-
+export default function TilePage({ route }) {
   const symbols = route.params.symbols
 
   const [sequencerPosition, setSequencerPosition] = useState(null)
@@ -20,23 +17,42 @@ export default function TilePage({route}) {
     return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height
   }
 
+  // sequencing
+  const [sequence, setSequence] = useState([null, null, null, null, null, null])
+
+  // tile controls 
+  const addSymbol = item => {
+    const sequenceCopy = [...sequence]
+
+    sequenceCopy[sequenceCopy.findIndex(space => space === null)] = {
+      playCompletion: 0,
+      symbol: item.symbol,
+      sound: item.sound
+    }
+    setSequence(sequenceCopy)
+  }
+
+  const clearSequence = () => {
+    setSequence([null, null, null, null, null, null])
+  }
+
+
   return (
     <View style={styles.app}>
       <View style={styles.tileFlexContainer}>
-      <View style={styles.tileContainer}>
-
-        {symbols.map((symbol)=> <Tile isDropZone={isDropZone} symbol={symbol.symbol}/>
-)}
-      </View>
+        <View style={styles.tileContainer}>
+          {symbols.map((symbol, i) => (
+            <Tile key={i} isDropZone={isDropZone} addSymbol={addSymbol} {...symbol} />
+          ))}
+        </View>
       </View>
       <View
         style={styles.sequencer}
         onLayout={event => setSequencerPosition(event.nativeEvent.layout)}
       >
-        <Sequencer />
-        <MediaControls />
+        <Sequencer sequence={sequence}/>
+        <MediaControls clearSequence={clearSequence}/>
       </View>
-
     </View>
   )
 }
@@ -45,21 +61,20 @@ const styles = StyleSheet.create({
   app: {
     backgroundColor: colors.primaryLight,
     height: '100%',
-    flex: 1,
+    flex: 1
   },
-  tileFlexContainer:{
+  tileFlexContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    zIndex: 100,
-
+    zIndex: 100
   },
   tileContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginRight: 5,
-    marginLeft: 5,
+    marginLeft: 5
   },
   sequencer: {
     width: '100%',
@@ -69,7 +84,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     backgroundColor: colors.primary,
-    alignSelf: 'stretch',
-
+    alignSelf: 'stretch'
   }
 })

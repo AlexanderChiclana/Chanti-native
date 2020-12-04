@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
 
 import {
   colors,
@@ -8,15 +8,14 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 
-const MediaWidget = ({navigation}) => {
-
+const MediaWidget = (props) => {
   return (
     <View style={styles.mediaWidgetContainer}>
       <View style={styles.bar}>
-        <View style={styles.mediaButton}>
+        <TouchableOpacity style={styles.mediaButton} onPress={ () => props.clearSequence()}>
         <Icon name="trash" size={30} color={'white'} />
 
-            </View> 
+            </TouchableOpacity> 
     
         <View style={styles.playButton}>
 

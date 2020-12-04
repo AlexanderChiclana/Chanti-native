@@ -2,41 +2,54 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 
 
-export default function Sequencer() {
-    const [sequence, setSequence] = useState([null, null, null, null, null, null])
+export default function Sequencer(props) {
 
     return(
         <View style={styles.sequencerContainer}>
-            <Space />
-            <Space />
-            <Space />
-            <Space />
-            <Space />
-            <Space />
+            {props.sequence.map((space, i) => <Space key={i} {...space} isEmpty={space === null}/>)}
         </View>
     )
 }
 
-const Space = () => {
+const Space = (props) => {
+    console.log(props)
     return ( 
-        <View style={styles.spaceContainer}>
+        <>
+       { props.isEmpty ? 
+        <View style={{...styles.spaceContainer, ...styles.empty}}>
 
         </View>
+        : 
+        <View style={{...styles.spaceContainer, ...styles.filled}}>
+            <Text style={{fontSize: 30}}>
+                {props.symbol}
+            </Text>
+        </View>
+        }
+        </>
+        
      );
 }
 
 const styles = StyleSheet.create({
     spaceContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
         height: 50,
         width: 50,
-        backgroundColor: 'rgba(255,255,255, .5)',
         margin: 5,
         marginTop: 10,
         borderRadius: 5,
 
     },
-    sequencerContainer: {
-        flexDirection: 'row',
+    filled:{
+        backgroundColor: 'white',
+    },
+    empty:{
+        backgroundColor: 'rgba(255,255,255, .5)',
+    },
+     sequencerContainer: {
+        flexDirection: 'row-reverse',
     }
   })
   

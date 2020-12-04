@@ -34,6 +34,8 @@ class Tile extends Component {
         // demo code for confirming drop target and firing off function
         // this.props.isDropZone(gesture) && this.props.setSequencerColor('red')
         // resetting the tile back to original position
+        this.props.isDropZone(gesture) && this.props.addSymbol({symbol: this.props.symbol, sound: this.props.sound})
+
         position.setValue({ x: 0, y: 0 })
       }
     })

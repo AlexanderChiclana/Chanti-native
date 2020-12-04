@@ -23,9 +23,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator>
-        {systems.map(system => {
+        {systems.map((system, i) => {
           return (
             <Drawer.Screen
+              key={i}
               name={system.name}
               component={TabView}
               initialParams={system}
