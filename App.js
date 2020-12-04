@@ -1,9 +1,6 @@
-import { StatusBar } from 'expo-status-bar'
 import React, { useState, useContext } from 'react'
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
-import Tile from './components/Tile.js'
-import Sequencer from './components/Sequencer.js'
-import MediaControls from './components/MediaControls.js'
+
 import Header from './components/Header.js'
 
 import TilePage from './pages/TilePage.js'
@@ -12,11 +9,11 @@ import PhrasePage from './pages/PhrasePage.js'
 import { colors } from '../chanti-native-client/theme.js'
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
+
+import systems from './data/systems.js'
 
 const Drawer = createDrawerNavigator()
 
@@ -25,47 +22,27 @@ const Tab = createMaterialTopTabNavigator()
 export default function App() {
   return (
     <NavigationContainer>
-
       <Drawer.Navigator>
-        <Drawer.Screen
-          name="Torah"
-          component={TabView}
-          initialParams={{ systemName: 'Torah' }}
-        />
-        <Drawer.Screen
-          name="Haftarah"
-          component={TabView}
-          initialParams={{ systemName: 'Hafrarah' }}
-        />
-        <Drawer.Screen
-          name="HHD"
-          component={TabView}
-          initialParams={{ systemName: 'HHD' }}
-        />
-        <Drawer.Screen
-          name="Ruth"
-          component={TabView}
-          initialParams={{ systemName: 'Ruth' }}
-        />
-        <Drawer.Screen
-          name="Lamentation"
-          component={TabView}
-          initialParams={{ systemName: 'Lamentation' }}
-        />
-        <Drawer.Screen
-          name="Esther"
-          component={TabView}
-          initialParams={{ systemName: 'Esther' }}
-        />
+        {systems.map(system => {
+          return (
+            <Drawer.Screen
+              name={system.name}
+              component={TabView}
+              initialParams={system}
+            />
+          )
+        })}
       </Drawer.Navigator>
     </NavigationContainer>
   )
 }
 
 const TabView = ({ route, navigation }) => {
-  console.log(navigation)
-  let system = route.params.systemName
+  // console.log(navigation)
+  let system = route.params.name
+  let symbols = route.params
 
+  // destructure route params later
   return (
     <React.Fragment>
       <Header system={system} />
@@ -73,7 +50,10 @@ const TabView = ({ route, navigation }) => {
         swipeEnabled={false}
         tabBarOptions={{
           activeTintColor: 'white',
-          indicatorStyle: {color: 'red', backgroundColor: colors.primaryLight},
+          indicatorStyle: {
+            color: 'red',
+            backgroundColor: colors.primaryLight
+          },
           labelStyle: { fontSize: 12 },
           style: { backgroundColor: colors.primary }
         }}
@@ -81,12 +61,12 @@ const TabView = ({ route, navigation }) => {
         <Tab.Screen
           name="Symbols"
           component={TilePage}
-          initialParams={system}
+          initialParams={symbols}
         />
         <Tab.Screen
           name="Phrases"
           component={PhrasePage}
-          initialParams={system}
+          initialParams={route.params}
         />
       </Tab.Navigator>
     </React.Fragment>

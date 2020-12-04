@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     bar:{
-        padding: 10,
+        padding: 5,
         marginBottom: 10,
         borderRadius: 120,
         backgroundColor: colors.primaryLight,

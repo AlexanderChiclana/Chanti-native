@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import Tile from '../components/Tile.js'
 import Sequencer from '../components/Sequencer.js'
@@ -9,9 +9,11 @@ import { colors } from '../theme.js'
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
-export default function TilePage({}) {
+export default function TilePage({route}) {
+
+  const symbols = route.params.symbols
+
   const [sequencerPosition, setSequencerPosition] = useState(null)
-  // const [sequencerColor, setSequencerColor] = useState('blue')
 
   const isDropZone = gesture => {
     const dz = sequencerPosition
@@ -22,25 +24,9 @@ export default function TilePage({}) {
     <View style={styles.app}>
       <View style={styles.tileFlexContainer}>
       <View style={styles.tileContainer}>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
-        <Tile isDropZone={isDropZone}/>
+
+        {symbols.map((symbol)=> <Tile isDropZone={isDropZone} symbol={symbol.symbol}/>
+)}
       </View>
       </View>
       <View

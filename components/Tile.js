@@ -54,7 +54,7 @@ class Tile extends Component {
           {...handles}
         >
           <View style={styles.container}>
-            <Text style={styles.letter}>A</Text>
+            <Text style={styles.letter}>{this.props.symbol}</Text>
 
             <View style={styles.box} />
           </View>
