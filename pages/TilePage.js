@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import Tile from '../components/Tile.js'
 import Sequencer from '../components/Sequencer.js'
 import MediaControls from '../components/MediaControls.js'
+import AudioSequence from '../components/AudioSequence.js'
 
 import { colors } from '../theme.js'
 
@@ -50,6 +51,7 @@ export default function TilePage({ route }) {
         style={styles.sequencer}
         onLayout={event => setSequencerPosition(event.nativeEvent.layout)}
       >
+        <AudioSequence />
         <Sequencer sequence={sequence}/>
         <MediaControls clearSequence={clearSequence}/>
       </View>

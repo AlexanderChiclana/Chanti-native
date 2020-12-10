@@ -5,6 +5,7 @@ import Header from './components/Header.js'
 
 import TilePage from './pages/TilePage.js'
 import PhrasePage from './pages/PhrasePage.js'
+import DemoPage from './pages/DemoPage.js'
 
 import { colors } from '../chanti-native-client/theme.js'
 
@@ -69,6 +70,12 @@ const TabView = ({ route, navigation }) => {
           component={PhrasePage}
           initialParams={route.params}
         />
+                <Tab.Screen
+          name="Demo"
+          component={DemoPage}
+          initialParams={route.params}
+        />
+        
       </Tab.Navigator>
     </React.Fragment>
   )
