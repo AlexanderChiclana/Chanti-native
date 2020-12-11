@@ -89,13 +89,13 @@ export default function TilePage({ route }) {
 
   //useEffect for index changing
   useEffect(() => {
-    console.log('index changed')
     loadAudio()
   },[currentIndex])
 
   // audio functions
   const loadAudio = async () => {
     try {
+      console.log('trying to load')
       const playbackInstance = new Audio.Sound()
       // const source = audioBookPlaylist[currentIndex].uri
       // console.log('loading audio')
@@ -114,7 +114,8 @@ export default function TilePage({ route }) {
 
       setPlaybackInstance(playbackInstance)
     } catch (e) {
-      // console.log(e)
+      console.log('something went wrong')
+      console.log(e)
     }
   }
 
@@ -133,30 +134,11 @@ export default function TilePage({ route }) {
     setIsPlaying(!isPlaying)
 	}
 
-	// const handlePreviousTrack = async () => {
-	// 	let { playbackInstance, currentIndex } = this.state
-	// 	if (playbackInstance) {
-	// 		await playbackInstance.unloadAsync()
-	// 		currentIndex < audioBookPlaylist.length - 1 ? (currentIndex -= 1) : (currentIndex = 0)
-	// 		this.setState({
-	// 			currentIndex
-	// 		})
-	// 		this.loadAudio()
-	// 	}
-	// }
 
-	const handleNextTrack = async () => {
-    // this might give me trouble, might need to create copy of current index
-    let currentIndexCopy = currentIndex
-    // console.log(playbackInstance)
-		if (playbackInstance) {
-			await playbackInstance.unloadAsync()
-			// currentIndexCopy < audioBookPlaylist.length - 1 ? (currentIndexCopy += 1) : (currentIndexCopy = 0)
-      setCurrentIndex(currentIndex + 1)
-      
-			// loadAudio()
-    }
+	const handleNextTrack = () => {
+    // will need to make reset
   
+    setCurrentIndex(currentIndex + 1)
 	}
 
   // tile controls
