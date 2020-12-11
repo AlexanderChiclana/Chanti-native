@@ -5,6 +5,8 @@ import Sequencer from '../components/Sequencer.js'
 import MediaControls from '../components/MediaControls.js'
 import { Audio } from 'expo-av'
 
+import { useIsMount } from '../hooks/useIsMount.js'
+
 import systemsArr from '../data/systems.js'
 
 import { colors } from '../theme.js'
@@ -46,41 +48,50 @@ export default function TilePage({ route }) {
     })()
   }, [])
 
+  const isMount = useIsMount()
   //useEffect for index changing
   useEffect(() => {
-    console.log('I am the danger')
-    loadAudio()
+    if (isMount) {
+      console.log('First Render')
+    } else {
+      console.log(`The sequence is ${JSON.stringify(sequence)}`)
+      console.log(`The index is ${currentIndex}`)
+      loadAudio()
+      console.log('Subsequent Render')
+    }
   }, [currentIndex])
 
   // audio functions
   const loadAudio = async () => {
-    try {
-      const playbackInstance = new Audio.Sound()
-      // const source = audioBookPlaylist[currentIndex].uri
-      // console.log('loading audio')
-      const status = {
-        shouldPlay: isPlaying,
-        volume: volume
+    
+      try {
+        const playbackInstance = new Audio.Sound()
+        // const source = audioBookPlaylist[currentIndex].uri
+        // console.log('loading audio')
+        const status = {
+          shouldPlay: isPlaying,
+          volume: volume
+        }
+        // console.log(systemsArr[0].symbols[0])
+
+        playbackInstance.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate)
+        // console.log(`this guy right here ${sequence[currentIndex].sound} and ${currentIndex}`)
+
+        // reference to file causing problems, fails to load audio when attempting to load a null value
+        await playbackInstance.loadAsync(
+          sequence[currentIndex].sound,
+          // temp,
+          status,
+          false
+        )
+
+        setPlaybackInstance(playbackInstance)
+        // console.log(sequence[0])
+      } catch (e) {
+        console.log('something went wrong while loading')
+        console.log(e)
       }
-      // console.log(systemsArr[0].symbols[0])
-
-      playbackInstance.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate)
-      // console.log(`this guy right here ${sequence[currentIndex].sound} and ${currentIndex}`)
-
-      // reference to file causing problems, fails to load audio when attempting to load a null value
-      await playbackInstance.loadAsync(
-        sequence[currentIndex].sound,
-        // temp,
-        status,
-        false
-      )
-
-      setPlaybackInstance(playbackInstance)
-      // console.log(sequence[0])
-    } catch (e) {
-      console.log('something went wrong while loading')
-      console.log(e)
-    }
+    
   }
 
   const onPlaybackStatusUpdate = playbackStatus => {
@@ -112,9 +123,9 @@ export default function TilePage({ route }) {
 
   const handleStop = async () => {
     if (sequence[0] !== null) {
-     setCurrentIndex(null)
-     setIsPlaying(false)
-     await playbackInstance.stopAsync()
+      setCurrentIndex(null)
+      setIsPlaying(false)
+      await playbackInstance.stopAsync()
     }
   }
 
@@ -136,7 +147,7 @@ export default function TilePage({ route }) {
     setSequence([null, null, null, null, null, null])
   }
 
-  // for determining tile drop zone 
+  // for determining tile drop zone
   const isDropZone = gesture => {
     const dz = sequencerPosition
     return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height

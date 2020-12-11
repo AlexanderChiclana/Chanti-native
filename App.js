@@ -69,13 +69,7 @@ const TabView = ({ route, navigation }) => {
           name="Phrases"
           component={PhrasePage}
           initialParams={route.params}
-        />
-                <Tab.Screen
-          name="Demo"
-          component={DemoPage}
-          initialParams={route.params}
-        />
-        
+        />      
       </Tab.Navigator>
     </React.Fragment>
   )
