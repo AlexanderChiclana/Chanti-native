@@ -4,79 +4,79 @@ const systemsArr = [
         symbols: [
             {
                 symbol: 'A',
-                sound: require('../assets/Braamamma.wav')
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'B',
-                sound: 'Retro - Digital Eagle.wav'
+                sound: require('../assets/B.wav')
             },
             {
                 symbol: 'C',
-                sound: 'Retro - Magic Respawn.wav'
+                sound: require('../assets/C.wav')
             },
             {
                 symbol: 'D',
-                sound: 'Retro - Now You See It.wav'
+                sound: require('../assets/D.wav')
             },
             {
                 symbol: 'E',
-                sound: 'Retro - Shuriken Laser.wav'
+                sound: require('../assets/E.wav')
             },
             {
                 symbol: 'F',
-                sound: 'Punch - Pop.wav'
+                sound: require('../assets/F.wav')
             },
             {
                 symbol: 'G',
-                sound: 'Punch - Splok.wav'
+                sound: require('../assets/G.wav')
             },
             {
                 symbol: 'H',
-                sound: 'Punch - Whack A Bot.wav'
+                sound: require('../assets/H.wav')
             },
             {
                 symbol: 'I',
-                sound: 'Impact - Jaw Breaker.wav'
+                sound: require('../assets/I.wav')
             },
             {
                 symbol: 'J',
-                sound: 'Short - Digital Crystal.wav'
+                sound: require('../assets/J.wav')
             },
             {
                 symbol: 'K',
-                sound: 'Short - Digital Malfunction.wav'
+                sound: require('../assets/K.wav')
             },
             {
                 symbol: 'L',
-                sound: 'Short - Mini Popup.wav'
+                sound: require('../assets/L.wav')
             },
             {
                 symbol: 'M',
-                sound: 'Short - Ploppy Plop.wav'
+                sound: require('../assets/M.wav')
             },
             {
                 symbol: 'N',
-                sound: 'Short - Pneumatic Woodpecker.wav'
+                sound: require('../assets/N.wav')
             },
             {
                 symbol: 'O',
-                sound: 'Short - Sad Little Sonar.wav'
+                sound: require('../assets/O.wav')
             },
             {
                 symbol: 'P',
-                sound: 'Short - Springy Gun.wav'
+                sound: require('../assets/P.wav')
             },
             {
                 symbol: 'Q',
-                sound: 'Short - Stutter 303.wav'
+                sound: require('../assets/Q.wav')
             },
             {
                 symbol: 'R',
-                sound: 'Short - Swish.wav'
+                sound: require('../assets/R.wav')
             },
             {
                 symbol: 'S',
-                sound: 'Short - Tape Confusion.wav'
+                sound: require('../assets/S.wav')
             }
         ]
     },
@@ -85,79 +85,79 @@ const systemsArr = [
         symbols: [
             {
                 symbol: 'A',
-                sound: 'Retro - Chip Power.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'B',
-                sound: 'Retro - Digital Eagle.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'C',
-                sound: 'Retro - Magic Respawn.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'D',
-                sound: 'Retro - Now You See It.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'E',
-                sound: 'Retro - Shuriken Laser.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'F',
-                sound: 'Punch - Pop.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'G',
-                sound: 'Punch - Splok.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'H',
-                sound: 'Punch - Whack A Bot.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'I',
-                sound: 'Impact - Jaw Breaker.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'J',
-                sound: 'Short - Digital Crystal.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'K',
-                sound: 'Short - Digital Malfunction.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'L',
-                sound: 'Short - Mini Popup.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'M',
-                sound: 'Short - Ploppy Plop.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'N',
-                sound: 'Short - Pneumatic Woodpecker.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'O',
-                sound: 'Short - Sad Little Sonar.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'P',
-                sound: 'Short - Springy Gun.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'Q',
-                sound: 'Short - Stutter 303.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'R',
-                sound: 'Short - Swish.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'S',
-                sound: 'Short - Tape Confusion.wav'
+                sound: require('../assets/A.wav')
             }
         ]
     },
@@ -166,79 +166,79 @@ const systemsArr = [
         symbols: [
             {
                 symbol: 'A',
-                sound: 'Retro - Chip Power.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'B',
-                sound: 'Retro - Digital Eagle.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'C',
-                sound: 'Retro - Magic Respawn.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'D',
-                sound: 'Retro - Now You See It.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'E',
-                sound: 'Retro - Shuriken Laser.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'F',
-                sound: 'Punch - Pop.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'G',
-                sound: 'Punch - Splok.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'H',
-                sound: 'Punch - Whack A Bot.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'I',
-                sound: 'Impact - Jaw Breaker.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'J',
-                sound: 'Short - Digital Crystal.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'K',
-                sound: 'Short - Digital Malfunction.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'L',
-                sound: 'Short - Mini Popup.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'M',
-                sound: 'Short - Ploppy Plop.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'N',
-                sound: 'Short - Pneumatic Woodpecker.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'O',
-                sound: 'Short - Sad Little Sonar.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'P',
-                sound: 'Short - Springy Gun.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'Q',
-                sound: 'Short - Stutter 303.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'R',
-                sound: 'Short - Swish.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'S',
-                sound: 'Short - Tape Confusion.wav'
+                sound: require('../assets/A.wav')
             }
         ]
     },
@@ -247,79 +247,79 @@ const systemsArr = [
         symbols: [
             {
                 symbol: 'A',
-                sound: 'Retro - Chip Power.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'B',
-                sound: 'Retro - Digital Eagle.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'C',
-                sound: 'Retro - Magic Respawn.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'D',
-                sound: 'Retro - Now You See It.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'E',
-                sound: 'Retro - Shuriken Laser.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'F',
-                sound: 'Punch - Pop.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'G',
-                sound: 'Punch - Splok.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'H',
-                sound: 'Punch - Whack A Bot.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'I',
-                sound: 'Impact - Jaw Breaker.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'J',
-                sound: 'Short - Digital Crystal.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'K',
-                sound: 'Short - Digital Malfunction.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'L',
-                sound: 'Short - Mini Popup.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'M',
-                sound: 'Short - Ploppy Plop.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'N',
-                sound: 'Short - Pneumatic Woodpecker.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'O',
-                sound: 'Short - Sad Little Sonar.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'P',
-                sound: 'Short - Springy Gun.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'Q',
-                sound: 'Short - Stutter 303.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'R',
-                sound: 'Short - Swish.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'S',
-                sound: 'Short - Tape Confusion.wav'
+                sound: require('../assets/A.wav')
             }
         ]
     },
@@ -328,79 +328,79 @@ const systemsArr = [
         symbols: [
             {
                 symbol: 'A',
-                sound: 'Retro - Chip Power.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'B',
-                sound: 'Retro - Digital Eagle.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'C',
-                sound: 'Retro - Magic Respawn.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'D',
-                sound: 'Retro - Now You See It.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'E',
-                sound: 'Retro - Shuriken Laser.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'F',
-                sound: 'Punch - Pop.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'G',
-                sound: 'Punch - Splok.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'H',
-                sound: 'Punch - Whack A Bot.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'I',
-                sound: 'Impact - Jaw Breaker.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'J',
-                sound: 'Short - Digital Crystal.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'K',
-                sound: 'Short - Digital Malfunction.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'L',
-                sound: 'Short - Mini Popup.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'M',
-                sound: 'Short - Ploppy Plop.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'N',
-                sound: 'Short - Pneumatic Woodpecker.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'O',
-                sound: 'Short - Sad Little Sonar.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'P',
-                sound: 'Short - Springy Gun.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'Q',
-                sound: 'Short - Stutter 303.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'R',
-                sound: 'Short - Swish.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'S',
-                sound: 'Short - Tape Confusion.wav'
+                sound: require('../assets/A.wav')
             }
         ]
     },
@@ -409,79 +409,79 @@ const systemsArr = [
         symbols: [
             {
                 symbol: 'A',
-                sound: 'Retro - Chip Power.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'B',
-                sound: 'Retro - Digital Eagle.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'C',
-                sound: 'Retro - Magic Respawn.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'D',
-                sound: 'Retro - Now You See It.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'E',
-                sound: 'Retro - Shuriken Laser.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'F',
-                sound: 'Punch - Pop.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'G',
-                sound: 'Punch - Splok.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'H',
-                sound: 'Punch - Whack A Bot.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'I',
-                sound: 'Impact - Jaw Breaker.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'J',
-                sound: 'Short - Digital Crystal.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'K',
-                sound: 'Short - Digital Malfunction.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'L',
-                sound: 'Short - Mini Popup.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'M',
-                sound: 'Short - Ploppy Plop.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'N',
-                sound: 'Short - Pneumatic Woodpecker.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'O',
-                sound: 'Short - Sad Little Sonar.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'P',
-                sound: 'Short - Springy Gun.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'Q',
-                sound: 'Short - Stutter 303.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'R',
-                sound: 'Short - Swish.wav'
+                sound: require('../assets/A.wav')
             },
             {
                 symbol: 'S',
-                sound: 'Short - Tape Confusion.wav'
+                sound: require('../assets/A.wav')
             }
         ]
     }
