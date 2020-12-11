@@ -77,8 +77,6 @@ export default class DemoPage extends React.Component {
 			const playbackInstance = new Audio.Sound()
 			// const source = audioBookPlaylist[currentIndex].uri
                 
-			const source = require('../assets/Braamamma.wav')
-
 			const status = {
 				shouldPlay: isPlaying,
 				volume: volume
@@ -95,13 +93,13 @@ export default class DemoPage extends React.Component {
 		}
 	}
 
-	onPlaybackStatusUpdate = status => {
-        console.log(status)
+	onPlaybackStatusUpdate = playbackStatus => {
+        // console.log(playbackStatus)
 		this.setState({
-			isBuffering: status.isBuffering
+			isBuffering: playbackStatus.isBuffering
         })
         
-        if (status.didJustFinish) {
+        if (playbackStatus.didJustFinish) {
             this.handleNextTrack()
         }
 	}

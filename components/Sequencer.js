@@ -12,7 +12,7 @@ export default function Sequencer(props) {
 }
 
 const Space = (props) => {
-    console.log(props)
+    // console.log(props)
     return ( 
         <>
        { props.isEmpty ? 

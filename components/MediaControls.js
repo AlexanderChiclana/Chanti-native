@@ -17,11 +17,11 @@ const MediaWidget = (props) => {
 
             </TouchableOpacity> 
     
-        <View style={styles.playButton}>
+        <TouchableOpacity onPress={ () => props.handlePlayPause()} style={styles.playButton}>
 
         <Icon name="play-circle" size={90} color={colors.secondary} />
 
-        </View>
+        </TouchableOpacity>
 
         <View style={styles.mediaButton}>
         <Icon name="stop" size={25} color={'white'} />
