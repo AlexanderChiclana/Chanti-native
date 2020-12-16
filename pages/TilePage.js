@@ -20,6 +20,7 @@ export default function TilePage({ route }) {
 
   // sequence of symbols, each contains logo and audio file
   const [sequence, setSequence] = useState([null, null, null, null, null, null])
+
   // audio player state
   const [isPlaying, setIsPlaying] = useState(false)
   const [playbackInstance, setPlaybackInstance] = useState(null)
@@ -51,10 +52,11 @@ export default function TilePage({ route }) {
   const isMount = useIsMount()
   //useEffect for index changing
   useEffect(() => {
+    
     if (isMount) {
       console.log('First Render')
     } else {
-      console.log(`The sequence is ${JSON.stringify(sequence)}`)
+      // console.log(`The sequence is ${JSON.stringify(sequence)}`)
       console.log(`The index is ${currentIndex}`)
       loadAudio()
       console.log('Subsequent Render')
@@ -96,6 +98,7 @@ export default function TilePage({ route }) {
 
   const onPlaybackStatusUpdate = playbackStatus => {
     // console.log(playbackStatus)
+    console.log(sequence)
     setIsBuffering(playbackStatus.isBuffering)
 
     if (playbackStatus.didJustFinish) {
@@ -118,6 +121,14 @@ export default function TilePage({ route }) {
 
   const handleNextTrack = () => {
     // will need to make reset
+    // console.log(sequence)
+    // if (sequence[currentIndex + 1] !== null) {
+    //   console.log('incrementing index')
+    //   setCurrentIndex(currentIndex + 1)
+    // } else {
+    //   console.log('setting index to 0')
+    //   setCurrentIndex(0)
+    // }
     setCurrentIndex(currentIndex + 1)
   }
 

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 
 import Header from './components/Header.js'
 
-import TilePage from './pages/TilePage.js'
+import TilePageClass from './pages/TilePageClass.js'
 import PhrasePage from './pages/PhrasePage.js'
 import DemoPage from './pages/DemoPage.js'
 
@@ -62,7 +62,7 @@ const TabView = ({ route, navigation }) => {
       >
         <Tab.Screen
           name="Symbols"
-          component={TilePage}
+          component={TilePageClass}
           initialParams={symbols}
         />
         <Tab.Screen

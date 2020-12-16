@@ -3,10 +3,13 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 
 
 export default function Sequencer(props) {
-
+    const { sequence } = props
+    // console.log(sequence)
     return(
         <View style={styles.sequencerContainer}>
-            {props.sequence.map((space, i) => <Space key={i} {...space} isEmpty={space === null}/>)}
+            {
+                [...sequence, ...new Array(6 - sequence.length).fill(null)].map((space, i) => <Space key={i} {...space} isEmpty={space === null}/>)
+            }
         </View>
     )
 }
