@@ -91,69 +91,101 @@ export default function TilePage({ route }) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [volume, setVolume] = useState(1.0)
-  const [isBuffering, setIsBuffering] = useState(true)
+  //   const [isBuffering, setIsBuffering] = useState(true)
 
+  // state for current playback item
   const [isFinished, setIsFinished] = useState(false)
-
+  const [playbackPosition, setPlaybackPosition] = useState(0)
+  // used for whenever a file finishes playing so that it can unload from memory
 
   // useEffect for mounting
 
   // new ones
   const [sound, setSound] = React.useState()
 
-  async function playSound(soundData) {
+  const playSound = async soundData => {
+    setIsPlaying(true)
     console.log('Loading Sound')
     const { sound } = await Audio.Sound.createAsync(sequence[0].sound)
     setSound(sound)
     sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate)
 
     // console.log('Playing Sound')
-    await sound.playAsync()
+    await sound.playFromPositionAsync(playbackPosition)
     // await sound.unloadAsync()
   }
 
-  const onPlaybackStatusUpdate = (playbackStatus) => {
-    setIsBuffering(playbackStatus.isBuffering)
-    if (playbackStatus.didJustFinish) {
+  const loadSound = async soundData => {
+    console.log('Loading Sound')
     
-    // handleUnload()
-    setIsFinished(true)
-    console.log('did just finish')
-    console.log(playbackStatus)
+    const { sound } = await Audio.Sound.createAsync(sequence[0].sound)
+    setSound(sound)
+    sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate)
 
+    // console.log('Playing Sound')
+    // await sound.playAsync()
+    // await sound.unloadAsync()
+  }
+
+  // callback function that runs during playback, used to trigger audio unloading and incrementing after finishing
+  const onPlaybackStatusUpdate = playbackStatus => {
+    
+    if (playbackStatus.didJustFinish) {
+      setIsFinished(true)
+      console.log('did just finish')
+    //   console.log(playbackStatus)
+      setPlaybackPosition(0)
+    } else {
+      setPlaybackPosition(playbackStatus.positionMillis)
+      setIsFinished(false) 
+    }
+  }
+
+  // hook for handling unloading whenever audio file finishes playing. Keeps async code consistent with react state
+  useEffect(() => {
+    isFinished && handleUnload()
+  }, [isFinished])
+
+  // async function for unloading the audio file. Checks to see if there is a sound in react state and then unloads that sound
+  const handleUnload = async () => {
+    if (sound) {
+      console.log('unloading')
+      await sound.unloadAsync()
+    } else {
+      ;('there is no sound')
+    }
+  }
+
+  const handlePause = async () => {
+    if (sound) {
+      console.log('pausing')
+      await sound.pauseAsync()
+      setIsPlaying(false)
+    } else {
+      ;('there is no sound')
     }
   }
 
   useEffect(() => {
-    if(isFinished) {
-        handleUnload()
-    }
-
-  }, [isFinished])
-
-  const handleUnload = async () => {
-      console.log('wtf')
-    if (sound) { 
-        console.log('unloading')
-        await sound.unloadAsync()
-    } else {
-        ('there is no sound')
-    }
-}
-
-
-  useEffect(() => {
-    sound ? (
-    isPlaying ? console.log('yah') : console.log('nah') ) : undefined
-
+    sound ? (isPlaying ? console.log('yah') : console.log('nah')) : undefined
   }, [isPlaying])
-
-
 
   const handlePlayPause = () => {
     // setIsPlaying(true)
+    //    await loadSound()
+    console.log(isPlaying)
+    if (isPlaying) {
+        handlePause()
+    } else {
+        playSound()
+        // loadSound()
+        // handlePlayOnly()
 
-      playSound()
+    }
+
+
+
+
     // if the sequencer is empty, dont allow
     //   if (sequence[0] !== null) {
     //     isPlaying
