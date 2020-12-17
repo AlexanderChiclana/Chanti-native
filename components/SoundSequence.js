@@ -11,11 +11,23 @@ import systemsArr from '../data/systems.js'
 import Sound from './Sound.js'
 
 const SoundSequence = props => {
-  const { sequence, isPlaying, currentIndex } = props
-
+  const { sequence, playStatus, currentIndex, setCurrentIndex } = props
+  console.log(sequence)
   return (
     <>
-      <Sound />
+      {sequence.map((soundData, index) => {
+        if (index === currentIndex && playStatus !== 'STOPPED') {
+          return (
+            <Sound
+              playStatus={playStatus}
+              file={soundData.sound}
+              setCurrentIndex={setCurrentIndex}
+              currentIndex={currentIndex}
+              key={index}
+            />
+          )
+        }
+      })}
     </>
   )
 }

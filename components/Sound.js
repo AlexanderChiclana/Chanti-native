@@ -9,7 +9,6 @@ import { colors } from '../theme.js'
 
 import systemsArr from '../data/systems.js'
 
-
 class Sound extends Component {
   state = {
     sound: null
@@ -22,7 +21,7 @@ class Sound extends Component {
   pauseFile = async () => {
     await this.state.sound.pauseAsync()
   }
-  
+
   unloadFile = async () => {
     if (this.state.sound) {
       console.log('unloading')
@@ -32,34 +31,40 @@ class Sound extends Component {
     }
   }
 
-  onPlaybackStatusUpdate = (playbackStatus) => {
-      if (playbackStatus.didJustFinish){
-          console.log('audio finished')
-      }
+  onPlaybackStatusUpdate = playbackStatus => {
+    if (playbackStatus.didJustFinish) {
+      this.props.setCurrentIndex(this.props.currentIndex + 1)
+      console.log('audio finished')
+    }
   }
 
   componentDidMount() {
     const loadData = async () => {
       const { sound } = await Audio.Sound.createAsync(
-        systemsArr[0].symbols[0].sound
+        // systemsArr[0].symbols[0].sound
+        this.props.file
       )
       this.setState({
         sound: sound
       })
-        sound.setOnPlaybackStatusUpdate(this.onPlaybackStatusUpdate)
+      sound.setOnPlaybackStatusUpdate(this.onPlaybackStatusUpdate)
     }
     loadData()
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // Typical usage (don't forget to compare props):
+    const { playStatus } = this.props
     if (this.state.sound && this.state.sound !== prevState.sound) {
       this.playFile()
     }
+
+    if (playStatus !== prevProps.playStatus) {
+      playStatus === 'PLAYING' ? this.playFile() : this.pauseFile()
+    }
   }
 
-  componentWillUnmount(){
-      this.unloadFile()
+  componentWillUnmount() {
+    this.unloadFile()
   }
 
   render() {

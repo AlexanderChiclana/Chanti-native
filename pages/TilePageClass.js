@@ -7,9 +7,9 @@ import { Audio } from 'expo-av'
 
 import { colors } from '../theme.js'
 
-import Sound from '../components/Sound.js'
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import SoundSequence from '../components/SoundSequence.js'
 
+import { TouchableHighlight } from 'react-native-gesture-handler'
 
 export default function TilePage({ route }) {
   const symbols = route.params.symbols
@@ -20,127 +20,23 @@ export default function TilePage({ route }) {
   const [sequence, setSequence] = useState([])
 
   // audio player state
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [playStatus, setPlayStatus] = useState('STOPPED')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [volume, setVolume] = useState(1.0)
-  //   const [isBuffering, setIsBuffering] = useState(true)
 
-  // state for current playback item
-  const [isFinished, setIsFinished] = useState(false)
-  const [playbackPosition, setPlaybackPosition] = useState(0)
-  // used for whenever a file finishes playing so that it can unload from memory
-
-  // useEffect for mounting
-
-  // new ones
-  const [sound, setSound] = React.useState()
-
-  const playSound = async () => {
-    setIsPlaying(true)
-    // console.log('Loading Sound')
-    const { sound } = await Audio.Sound.createAsync(
-      sequence[currentIndex].sound
-    )
-    setSound(sound)
-    sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate)
-
-    // console.log('Playing Sound')
-    await sound.playFromPositionAsync(playbackPosition)
-    // await sound.unloadAsync()
-  }
-
-  // callback function that runs during playback, used to trigger audio unloading and incrementing after finishing
-  const onPlaybackStatusUpdate = playbackStatus => {
-    const isLast = (sequence.length - 1) === (currentIndex)
-
-    console.log(isLast)
-
-    if (playbackStatus.didJustFinish) {
-      setIsFinished(true)
-      console.log('did just finish')
-      //   console.log(playbackStatus)
-      setPlaybackPosition(0)
-      if (!isLast) {
-        setCurrentIndex(currentIndex + 1)
-      } else {
-        console.log('last one playing')
-        // setCurrentIndex(currentIndex + 1)
-
-        setCurrentIndex(0)
-        setIsPlaying(false)
-        handleStop()
-      }
-    } else {
-      setPlaybackPosition(playbackStatus.positionMillis)
-      setIsFinished(false)
-    }
-  }
-
-  // hook for handling unloading whenever audio file finishes playing. Keeps async code consistent with react state
-  useEffect(() => {
-    isFinished && handleUnload()
-  }, [isFinished])
-
-  // async function for unloading the audio file. Checks to see if there is a sound in react state and then unloads that sound
-
-  
-  const handleUnload = async () => {
-    if (sound) {
-    //   console.log('unloading')
-      await sound.unloadAsync()
-    } else {
-      ;('there is no sound')
-    }
-  }
-
-  const handlePause = async () => {
-    if (sound) {
-      console.log('pausing')
-      await sound.pauseAsync()
-      setIsPlaying(false)
-    } else {
-      ;('there is no sound')
-    }
-  }
-
-  const handleStop = async () => {
-    if (sound) {
-      console.log('stopping')
-      await sound.stopAsync()
-      setIsPlaying(false)
-    } else {
-      ;('there is no sound')
-    }
-  }
-
-  useEffect(() => {
-    if (isPlaying) {
-      playSound()
-    }
-  }, [isPlaying])
-
-  useEffect(() => {
-    if (sound && isPlaying) {
-        console.log('effect firing')
-      playSound()
-    }
-  }, [currentIndex])
+  const handleStop = async () => {}
 
   const handlePlayPause = () => {
-
-    if (isPlaying) {
-      handlePause()
+    if (playStatus === 'STOPPED' || playStatus === 'PAUSED') {
+      setPlayStatus('PLAYING')
     } else {
-      setIsPlaying(true)
-  
+      setPlayStatus('PAUSED')
     }
-
   }
 
   // tile controls
   const addSymbol = symbol => {
     setSequence(prevSequence => [...prevSequence, { ...symbol }])
-    //   setCurrentIndex(0)
   }
 
   const clearSequence = () => {
@@ -173,11 +69,17 @@ export default function TilePage({ route }) {
         onLayout={event => setSequencerPosition(event.nativeEvent.layout)}
       >
         <Sequencer sequence={sequence} />
+        <SoundSequence
+          playStatus={playStatus}
+          sequence={sequence}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+        />
         <MediaControls
           clearSequence={clearSequence}
           handlePlayPause={handlePlayPause}
           handleStop={handleStop}
-          isPlaying={isPlaying}
+          playStatus={playStatus}
         />
       </View>
     </View>
