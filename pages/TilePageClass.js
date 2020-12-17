@@ -5,79 +5,11 @@ import Sequencer from '../components/Sequencer.js'
 import MediaControls from '../components/MediaControls.js'
 import { Audio } from 'expo-av'
 
-import { useIsMount } from '../hooks/useIsMount.js'
-
-import systemsArr from '../data/systems.js'
-
 import { colors } from '../theme.js'
 
-// const temp = systemsArr[0].symbols[0].sound
+import Sound from '../components/Sound.js'
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
-// export default class TilePage extends Component {
-//   //   const symbols = route.params.symbols
-//   state = {
-//     sequencerPosition: null,
-//     sequence: [],
-//     isPlaying: false,
-//     playbackInstance: null,
-//     currentIndex: null,
-//     volume: 1.0,
-//     isBuffering: true
-//   }
-
-//   // for determining tile drop zone
-//   isDropZone = gesture => {
-//     const dz = this.state.sequencerPosition
-//     return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height
-//   }
-
-//   addSymbol = symbol => {
-//     const sequenceCopy = this.state.sequence
-//     sequenceCopy.push({ ...symbol })
-//     console.log(sequenceCopy)
-//     this.setState({
-//       sequence: sequenceCopy
-//     })
-//   }
-
-//   render() {
-//     console.log(this.props)
-//     const { sequence, isPlaying, currentIndex } = this.state
-//     return (
-//       <View style={styles.app}>
-//         <View style={styles.tileFlexContainer}>
-//           <View style={styles.tileContainer}>
-//             {this.props.route.params.symbols.map((symbol, i) => (
-//               <Tile
-//                 key={i}
-//                 isDropZone={this.isDropZone}
-//                 addSymbol={this.addSymbol}
-//                 {...symbol}
-//               />
-//             ))}
-//           </View>
-//         </View>
-//         <View
-//           style={styles.sequencer}
-//           onLayout={event =>
-//             this.setState({
-//               sequencerPosition: event.nativeEvent.layout
-//             })
-//           }
-//         >
-//           <Sequencer sequence={sequence} />
-//           <MediaControls
-//             clearSequence={this.clearSequence}
-//             handlePlayPause={this.handlePlayPause}
-//             handleStop={this.handleStop}
-//             isPlaying={isPlaying}
-//             currentIndex={currentIndex}
-//           />
-//         </View>
-//       </View>
-//     )
-//   }
-// }
 
 export default function TilePage({ route }) {
   const symbols = route.params.symbols
@@ -103,10 +35,12 @@ export default function TilePage({ route }) {
   // new ones
   const [sound, setSound] = React.useState()
 
-  const playSound = async soundData => {
+  const playSound = async () => {
     setIsPlaying(true)
-    console.log('Loading Sound')
-    const { sound } = await Audio.Sound.createAsync(sequence[0].sound)
+    // console.log('Loading Sound')
+    const { sound } = await Audio.Sound.createAsync(
+      sequence[currentIndex].sound
+    )
     setSound(sound)
     sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate)
 
@@ -115,29 +49,30 @@ export default function TilePage({ route }) {
     // await sound.unloadAsync()
   }
 
-  const loadSound = async soundData => {
-    console.log('Loading Sound')
-    
-    const { sound } = await Audio.Sound.createAsync(sequence[0].sound)
-    setSound(sound)
-    sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate)
-
-    // console.log('Playing Sound')
-    // await sound.playAsync()
-    // await sound.unloadAsync()
-  }
-
   // callback function that runs during playback, used to trigger audio unloading and incrementing after finishing
   const onPlaybackStatusUpdate = playbackStatus => {
-    
+    const isLast = (sequence.length - 1) === (currentIndex)
+
+    console.log(isLast)
+
     if (playbackStatus.didJustFinish) {
       setIsFinished(true)
       console.log('did just finish')
-    //   console.log(playbackStatus)
+      //   console.log(playbackStatus)
       setPlaybackPosition(0)
+      if (!isLast) {
+        setCurrentIndex(currentIndex + 1)
+      } else {
+        console.log('last one playing')
+        // setCurrentIndex(currentIndex + 1)
+
+        setCurrentIndex(0)
+        setIsPlaying(false)
+        handleStop()
+      }
     } else {
       setPlaybackPosition(playbackStatus.positionMillis)
-      setIsFinished(false) 
+      setIsFinished(false)
     }
   }
 
@@ -147,9 +82,11 @@ export default function TilePage({ route }) {
   }, [isFinished])
 
   // async function for unloading the audio file. Checks to see if there is a sound in react state and then unloads that sound
+
+  
   const handleUnload = async () => {
     if (sound) {
-      console.log('unloading')
+    //   console.log('unloading')
       await sound.unloadAsync()
     } else {
       ;('there is no sound')
@@ -166,56 +103,38 @@ export default function TilePage({ route }) {
     }
   }
 
+  const handleStop = async () => {
+    if (sound) {
+      console.log('stopping')
+      await sound.stopAsync()
+      setIsPlaying(false)
+    } else {
+      ;('there is no sound')
+    }
+  }
+
   useEffect(() => {
-    sound ? (isPlaying ? console.log('yah') : console.log('nah')) : undefined
+    if (isPlaying) {
+      playSound()
+    }
   }, [isPlaying])
 
-  const handlePlayPause = () => {
-    // setIsPlaying(true)
-    //    await loadSound()
-    console.log(isPlaying)
-    if (isPlaying) {
-        handlePause()
-    } else {
-        playSound()
-        // loadSound()
-        // handlePlayOnly()
+  useEffect(() => {
+    if (sound && isPlaying) {
+        console.log('effect firing')
+      playSound()
+    }
+  }, [currentIndex])
 
+  const handlePlayPause = () => {
+
+    if (isPlaying) {
+      handlePause()
+    } else {
+      setIsPlaying(true)
+  
     }
 
-
-
-
-    // if the sequencer is empty, dont allow
-    //   if (sequence[0] !== null) {
-    //     isPlaying
-    //       ? await playbackInstance.pauseAsync()
-    //       : await playbackInstance.playAsync()
-    //     setIsPlaying(!isPlaying)
-    //   } else {
-    //     console.log('sequence is empty')
-    //   }
-  }
-
-  const handleNextTrack = () => {
-    // will need to make reset
-    // console.log(sequence)
-    // if (sequence[currentIndex + 1] !== null) {
-    //   console.log('incrementing index')
-    //   setCurrentIndex(currentIndex + 1)
-    // } else {
-    //   console.log('setting index to 0')
-    //   setCurrentIndex(0)
-    // }
-    //   setCurrentIndex(currentIndex + 1)
-  }
-
-  const handleStop = async () => {
-    //   if (sequence[0] !== null) {
-    //     setCurrentIndex(null)
-    //     setIsPlaying(false)
-    //     await playbackInstance.stopAsync()
-    //   }
   }
 
   // tile controls
