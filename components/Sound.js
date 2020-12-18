@@ -1,13 +1,6 @@
-import React, { useState, useEffect, Component } from 'react'
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
-import Tile from '../components/Tile.js'
-import Sequencer from '../components/Sequencer.js'
-import MediaControls from '../components/MediaControls.js'
+import React, { Component } from 'react'
+
 import { Audio } from 'expo-av'
-
-import { colors } from '../theme.js'
-
-import systemsArr from '../data/systems.js'
 
 class Sound extends Component {
   state = {
@@ -33,7 +26,7 @@ class Sound extends Component {
 
   onPlaybackStatusUpdate = playbackStatus => {
     if (playbackStatus.didJustFinish) {
-      this.props.setCurrentIndex(this.props.currentIndex + 1)
+      this.props.calcIndex()
       console.log('audio finished')
     }
   }
@@ -41,7 +34,6 @@ class Sound extends Component {
   componentDidMount() {
     const loadData = async () => {
       const { sound } = await Audio.Sound.createAsync(
-        // systemsArr[0].symbols[0].sound
         this.props.file
       )
       this.setState({

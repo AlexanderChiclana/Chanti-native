@@ -3,13 +3,10 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import Tile from '../components/Tile.js'
 import Sequencer from '../components/Sequencer.js'
 import MediaControls from '../components/MediaControls.js'
-import { Audio } from 'expo-av'
 
 import { colors } from '../theme.js'
 
 import SoundSequence from '../components/SoundSequence.js'
-
-import { TouchableHighlight } from 'react-native-gesture-handler'
 
 export default function TilePage({ route }) {
   const symbols = route.params.symbols
@@ -22,9 +19,20 @@ export default function TilePage({ route }) {
   // audio player state
   const [playStatus, setPlayStatus] = useState('STOPPED')
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [volume, setVolume] = useState(1.0)
+  
+  const calcIndex = () => {
+    if (currentIndex < (sequence.length - 1)){
+        setCurrentIndex(currentIndex + 1)
+    } else {
+        setPlayStatus('STOPPED')
+        setCurrentIndex(0)
+    }
+  }
 
-  const handleStop = async () => {}
+  const handleStop = () => {
+    setPlayStatus('STOPPED')
+    setCurrentIndex(0)
+  }
 
   const handlePlayPause = () => {
     if (playStatus === 'STOPPED' || playStatus === 'PAUSED') {
@@ -41,7 +49,7 @@ export default function TilePage({ route }) {
 
   const clearSequence = () => {
     //   handleStop()
-    //   setSequence([])
+      setSequence([])
   }
 
   // for determining tile drop zone
@@ -73,7 +81,7 @@ export default function TilePage({ route }) {
           playStatus={playStatus}
           sequence={sequence}
           currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
+          calcIndex={calcIndex}
         />
         <MediaControls
           clearSequence={clearSequence}

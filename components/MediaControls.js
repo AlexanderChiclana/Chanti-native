@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 const MediaWidget = (props) => {
 
-  const { isPlaying, clearSequence, handlePlayPause, currentIndex, handleStop } = props 
+  const { playStatus, clearSequence, handlePlayPause, handleStop } = props 
 
   return (
     <View style={styles.mediaWidgetContainer}>
@@ -22,7 +22,7 @@ const MediaWidget = (props) => {
     
         <TouchableOpacity onPress={ () => handlePlayPause()} style={styles.playButton}>
 
-         {!isPlaying ? <Icon name="play-circle" size={90} color={colors.secondary} /> : <Icon name="pause-circle" size={90} color={colors.secondary} /> }
+         {playStatus === 'PAUSED' || playStatus === 'STOPPED' ? <Icon name="play-circle" size={90} color={colors.secondary} /> : <Icon name="pause-circle" size={90} color={colors.secondary} /> }
 
         </TouchableOpacity>
 
