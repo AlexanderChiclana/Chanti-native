@@ -17,22 +17,21 @@ class Sound extends Component {
 
   unloadFile = async () => {
     if (this.state.sound) {
-      console.log('unloading')
       await this.state.sound.unloadAsync()
     } else {
-      ;('there is no sound')
+        console.log('something went wrong with the unload')
     }
   }
 
   onPlaybackStatusUpdate = playbackStatus => {
     if (playbackStatus.didJustFinish) {
       this.props.calcIndex()
-      console.log('audio finished')
     }
   }
 
   componentDidMount() {
     const loadData = async () => {
+
       const { sound } = await Audio.Sound.createAsync(
         this.props.file
       )

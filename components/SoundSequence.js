@@ -1,9 +1,14 @@
 import React from 'react'
 import Sound from './Sound.js'
+import { Audio } from 'expo-av'
+
+// settings for all audio played through app 
+Audio.setAudioModeAsync({
+    playsInSilentModeIOS: true
+})
 
 const SoundSequence = props => {
   const { sequence, playStatus, currentIndex, calcIndex } = props
-  console.log(sequence)
   return (
     <>
       {sequence.map((soundData, index) => {

@@ -13,20 +13,20 @@ export default function TilePage({ route }) {
 
   const [sequencerPosition, setSequencerPosition] = useState(null)
 
-  // sequence of symbols, each contains logo and audio file
-  const [sequence, setSequence] = useState([])
-
   // audio player state
   const [playStatus, setPlayStatus] = useState('STOPPED')
   const [currentIndex, setCurrentIndex] = useState(0)
-  
+
+  // audio player
+
+  // sequence of symbols, each contains logo and audio file
+  const [sequence, setSequence] = useState([])
+
   const calcIndex = () => {
-    if (currentIndex < (sequence.length - 1)){
-        setCurrentIndex(currentIndex + 1)
-    } else {
-        setPlayStatus('STOPPED')
-        setCurrentIndex(0)
-    }
+    // increments index if it isnt the final in sequence
+    currentIndex < sequence.length - 1
+      ? setCurrentIndex(currentIndex + 1)
+      : handleStop()
   }
 
   const handleStop = () => {
@@ -35,21 +35,21 @@ export default function TilePage({ route }) {
   }
 
   const handlePlayPause = () => {
-    if (playStatus === 'STOPPED' || playStatus === 'PAUSED') {
-      setPlayStatus('PLAYING')
-    } else {
-      setPlayStatus('PAUSED')
+    if (sequence.length > 0) {
+      playStatus === 'STOPPED' || playStatus === 'PAUSED'
+        ? setPlayStatus('PLAYING')
+        : setPlayStatus('PAUSED')
     }
   }
 
   // tile controls
   const addSymbol = symbol => {
-    setSequence(prevSequence => [...prevSequence, { ...symbol }])
+   sequence.length < 6 && setSequence(prevSequence => [...prevSequence, { ...symbol }])
   }
 
   const clearSequence = () => {
-    //   handleStop()
-      setSequence([])
+    handleStop()
+    setSequence([])
   }
 
   // for determining tile drop zone
@@ -76,7 +76,7 @@ export default function TilePage({ route }) {
         style={styles.sequencer}
         onLayout={event => setSequencerPosition(event.nativeEvent.layout)}
       >
-        <Sequencer sequence={sequence} />
+        <Sequencer sequence={sequence} playStatus={playStatus} currentIndex={currentIndex}/>
         <SoundSequence
           playStatus={playStatus}
           sequence={sequence}
