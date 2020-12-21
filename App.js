@@ -36,7 +36,7 @@ export default function App() {
   )
 }
 
-const TabView = ({ route, navigation }) => {
+const TabView = ({ route }) => {
   let system = route.params.name
   let symbols = route.params
 
