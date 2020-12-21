@@ -12,7 +12,7 @@ const MediaWidget = props => {
   const { playStatus, clearSequence, handlePlayPause, handleStop } = props
 
   return (
-    <View style={styles.mediaWidgetContainer}>
+    <View style={styles.mediaWidgetContainer} >
       <View style={styles.bar}>
         <TouchableOpacity
           style={styles.mediaButton}

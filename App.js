@@ -1,11 +1,8 @@
-import React, { useState, useContext } from 'react'
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
-
+import React from 'react'
 import Header from './components/Header.js'
 
 import TilePageClass from './pages/TilePageClass.js'
 import PhrasePage from './pages/PhrasePage.js'
-import DemoPage from './pages/DemoPage.js'
 
 import { colors } from '../chanti-native-client/theme.js'
 
@@ -40,7 +37,6 @@ export default function App() {
 }
 
 const TabView = ({ route, navigation }) => {
-  // console.log(navigation)
   let system = route.params.name
   let symbols = route.params
 

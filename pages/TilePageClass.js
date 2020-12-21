@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Component } from 'react'
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import React, { useState, useEffect, Component, useRef } from 'react'
+import { StyleSheet, Text, View, SafeAreaView, Dimensions } from 'react-native'
 import Tile from '../components/Tile.js'
 import Sequencer from '../components/Sequencer.js'
 import MediaControls from '../components/MediaControls.js'
@@ -7,6 +7,7 @@ import MediaControls from '../components/MediaControls.js'
 import { colors } from '../theme.js'
 
 import SoundSequence from '../components/SoundSequence.js'
+
 
 export default function TilePage({ route }) {
   const symbols = route.params.symbols
@@ -58,9 +59,39 @@ export default function TilePage({ route }) {
     return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height
   }
 
+  const seeLayout = (layout) => {
+    setSequencerPosition(layout)
+    // console.log(layout)
+
+  }
+
+  const layoutRef = useRef()
+  
+  const measureWelcome = () => {
+    layoutRef.current.measureInWindow(logLayout)
+    // layoutRef.measure(logLayout);
+  }
+
+  const logLayout = (ox, oy, width, height, px, py) => {
+    console.log("ox: " + ox);
+    console.log("oy: " + oy);
+    console.log("width: " + width);
+    console.log("height: " + height);
+    console.log("px: " + px);
+    console.log("py: " + py);
+  }
+
+  useEffect(() => {
+    measureWelcome()
+  }, []);
+
   return (
-    <View style={styles.app}>
-      <View style={styles.tileFlexContainer}>
+    <View style={styles.app}      
+    // onLayout={event => seeLayout(event.nativeEvent.layout)}
+    >
+      <View 
+        onLayout={event => seeLayout(event.nativeEvent.layout)}
+        style={styles.tileFlexContainer}>
         <View style={styles.tileContainer}>
           {symbols.map((symbol, i) => (
             <Tile
@@ -74,7 +105,7 @@ export default function TilePage({ route }) {
       </View>
       <View
         style={styles.sequencer}
-        onLayout={event => setSequencerPosition(event.nativeEvent.layout)}
+        ref={layoutRef}
       >
         <Sequencer sequence={sequence} playStatus={playStatus} currentIndex={currentIndex}/>
         <SoundSequence

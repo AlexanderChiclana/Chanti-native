@@ -30,7 +30,7 @@ class Tile extends Component {
         this.setState({
           zIndex: 0
         })
-        // console.log(gesture)
+        console.log(gesture)
         // demo code for confirming drop target and firing off function
         // this.props.isDropZone(gesture) && this.props.setSequencerColor('red')
         // resetting the tile back to original position
