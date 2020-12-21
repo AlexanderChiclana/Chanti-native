@@ -12,7 +12,7 @@ import SoundSequence from '../components/SoundSequence.js'
 export default function TilePage({ route }) {
   const symbols = route.params.symbols
 
-  const [sequencerPosition, setSequencerPosition] = useState(null)
+  const [sequencerXY, setSequencerXY] = useState(null)
 
   // audio player state
   const [playStatus, setPlayStatus] = useState('STOPPED')
@@ -55,42 +55,29 @@ export default function TilePage({ route }) {
 
   // for determining tile drop zone
   const isDropZone = gesture => {
-    const dz = sequencerPosition
+    const dz = sequencerXY
     return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height
   }
 
-  const seeLayout = (layout) => {
-    setSequencerPosition(layout)
-    // console.log(layout)
-
-  }
-
+  // ref created for the drop target zone 
   const layoutRef = useRef()
   
-  const measureWelcome = () => {
-    layoutRef.current.measureInWindow(logLayout)
-    // layoutRef.measure(logLayout);
+  // ref that uses react native ref method to location the position and size of the drop target, sets in state after layout occurs 
+  const setLayoutRef = () => {
+    layoutRef.current.measureInWindow((x, y, width, height) => {
+      setSequencerXY({
+          width: width,
+          height: height,
+          x: x,
+          y: y
+      })
+    })
   }
-
-  const logLayout = (ox, oy, width, height, px, py) => {
-    console.log("ox: " + ox);
-    console.log("oy: " + oy);
-    console.log("width: " + width);
-    console.log("height: " + height);
-    console.log("px: " + px);
-    console.log("py: " + py);
-  }
-
-  useEffect(() => {
-    measureWelcome()
-  }, []);
 
   return (
     <View style={styles.app}      
-    // onLayout={event => seeLayout(event.nativeEvent.layout)}
     >
       <View 
-        onLayout={event => seeLayout(event.nativeEvent.layout)}
         style={styles.tileFlexContainer}>
         <View style={styles.tileContainer}>
           {symbols.map((symbol, i) => (
@@ -106,6 +93,7 @@ export default function TilePage({ route }) {
       <View
         style={styles.sequencer}
         ref={layoutRef}
+        onLayout={() => setLayoutRef()}
       >
         <Sequencer sequence={sequence} playStatus={playStatus} currentIndex={currentIndex}/>
         <SoundSequence
