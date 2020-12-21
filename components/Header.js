@@ -1,14 +1,20 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
 import React, { useState, useContext } from 'react'
 import { colors } from '../theme.js'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { DrawerActions, useNavigation  } from '@react-navigation/native';
 
-const Header = props => {
+
+const Header = (props) => {
+
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.headerContainer}>
-      <View style={{ ...styles.iconContainer }}>
+      <TouchableOpacity style={{ ...styles.iconContainer }}  onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+>
         <Icon name="bars" size={30} color="white" />
-      </View>
+      </TouchableOpacity>
       <Text style={styles.title}>{props.system}</Text>
       <View style={{ ...styles.iconContainer, alignItems: 'flex-end' }}>
         <Icon name="info-circle" size={30} color="white" />
