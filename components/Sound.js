@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import { Audio } from 'expo-av'
 
+// convert to handle all sounds and sequnce play
 class Sound extends Component {
   state = {
     sound: null
@@ -24,7 +25,7 @@ class Sound extends Component {
   }
 
   onPlaybackStatusUpdate = playbackStatus => {
-    if (playbackStatus.didJustFinish) {
+    if (this.props.isSequential && playbackStatus.didJustFinish) {
       this.props.calcIndex()
     }
   }

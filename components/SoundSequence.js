@@ -20,6 +20,7 @@ const SoundSequence = props => {
               calcIndex={calcIndex}
               currentIndex={currentIndex}
               key={index}
+              isSequential={true}
             />
           )
         }

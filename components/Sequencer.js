@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import { colors, borders } from '../theme.js'
+import * as Animatable from 'react-native-animatable'
 
 export default function Sequencer(props) {
   const { sequence, currentIndex, playStatus } = props
@@ -23,7 +24,6 @@ export default function Sequencer(props) {
 }
 
 const Space = props => {
-  // console.log(props)
   const { index, currentIndex, playStatus, isEmpty } = props
   const isPlaying = index === currentIndex && playStatus !== 'STOPPED'
   const hasPlayed = index < currentIndex && playStatus !== 'STOPPED'
@@ -36,7 +36,7 @@ const Space = props => {
     } else if (hasPlayed) {
       return {
         // backgroundColor: 'blue',
-        opacity: .2,
+        opacity: 0.2
       }
     }
   }
@@ -46,9 +46,17 @@ const Space = props => {
       {isEmpty ? (
         <View style={{ ...styles.spaceContainer, ...styles.empty }}></View>
       ) : (
-        <View style={{ ...styles.spaceContainer, ...styles.filled, ...calcStyle()}}>
-          <Text style={{ fontSize: 30 }}>{props.symbol}</Text>
-        </View>
+        <Animatable.View animation="bounceIn">
+          <View
+            style={{
+              ...styles.spaceContainer,
+              ...styles.filled,
+              ...calcStyle()
+            }}
+          >
+            <Text style={{ fontSize: 30 }}>{props.symbol}</Text>
+          </View>
+        </Animatable.View>
       )}
     </>
   )
@@ -70,7 +78,7 @@ const styles = StyleSheet.create({
   empty: {
     // backgroundColor: 'rgba(255,255,255, .5)'
     backgroundColor: 'white',
-    opacity: .5
+    opacity: 0.5
   },
   sequencerContainer: {
     flexDirection: 'row-reverse'
