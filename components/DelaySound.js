@@ -39,6 +39,15 @@ class Sound extends Component {
     }
   }
 
+  onPlaybackStatusUpdate = playbackStatus => {
+    
+    if (playbackStatus.didJustFinish) {
+        console.log(playbackStatus)
+    //   this.stopFile()
+      this.props.stopPlay()
+    }
+  }
+
   componentDidMount() {
     this._isMounted = true
     //   console.log(this.props.file)
@@ -47,7 +56,7 @@ class Sound extends Component {
       this.setState({
         sound: sound
       })
-      //   sound.setOnPlaybackStatusUpdate(this.onPlaybackStatusUpdate)
+        sound.setOnPlaybackStatusUpdate(this.onPlaybackStatusUpdate)
     }
     loadData()
   }

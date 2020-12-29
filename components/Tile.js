@@ -30,7 +30,7 @@ class Tile extends Component {
         this.setState({
           playStatus: 'PLAYING'
         })
-        // this.playFile()
+        // console.log('tap registered' + this.state.playStatus)
       },
       onPanResponderMove: (event, gesture) => {
         this.setState({
@@ -75,6 +75,13 @@ class Tile extends Component {
     }
   }
 
+  stopPlay = () => {
+    console.log('stopping play')
+    this.setState({
+      playStatus: 'STOPPED'
+    })
+  }
+
   componentWillUnmount() {
     this.setState({
       playStatus: 'STOPPED'
@@ -92,11 +99,12 @@ class Tile extends Component {
           opacity: this.state.isDragging ? 0.7 : 1
         }}
       >
-           <DelaySound
-              playStatus={this.state.playStatus}
-              file={this.props.sound}
-                  />
-        
+        <DelaySound
+          playStatus={this.state.playStatus}
+          file={this.props.sound}
+          stopPlay={this.stopPlay}
+        />
+
         <Animated.View
           style={[
             this.state.position.getLayout(),
