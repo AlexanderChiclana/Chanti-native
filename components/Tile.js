@@ -5,16 +5,20 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
+  Pressable,
   PanResponder,
   Animated
 } from 'react-native'
 
 import { tileSize, colors } from '../theme.js'
 
-import Sound from './Sound.js'
+import DelaySound from './DelaySound.js'
+
 import { Audio } from 'expo-av'
 
 import * as Animatable from 'react-native-animatable'
+
+import ReactTimeout from 'react-timeout'
 
 class Tile extends Component {
   constructor(props) {
@@ -71,69 +75,10 @@ class Tile extends Component {
     }
   }
 
-  playFile = async () => {
-    if (this.state.sound) {
-      try {
-        await this.state.sound.playAsync()
-      } catch {
-        console.log('something went wrong playing the file')
-      }
-    } else {
-      console.log('there is no sound loaded')
-    }
-  }
-
-  stopFile = async () => {
-    if (this.state.sound) {
-      try {
-        await this.state.sound.stopAsync()
-      } catch {
-        console.log('something didnt stop right')
-      }
-    } else {
-      console.log('there is no sound loaded')
-    } 
-  }
-  
-  unloadFile = async () => {
-    try {
-      if (this.state.sound) {
-        await this.state.sound.unloadAsync()
-      } else {
-        console.log('something went wrong with the unload')
-      }
-    } catch {
-      console.log('unload fail caught')
-    }
-  }
-
-  // onPlaybackStatusUpdate = playbackStatus => {
-  //   if (this.props.isSequential && playbackStatus.didJustFinish) {
-  //     this.props.calcIndex()
-  //   }
-  // }
-
-  componentDidMount() {
-    const loadData = async () => {
-      const { sound } = await Audio.Sound.createAsync(this.props.sound)
-      this.setState({
-        sound: sound
-      })
-      // sound.setOnPlaybackStatusUpdate(this.onPlaybackStatusUpdate)
-    }
-    loadData()
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { playStatus, sound } = this.state
-
-    if (sound && playStatus !== prevState.playStatus) {
-      playStatus === 'PLAYING' ? this.playFile() : this.stopFile()
-    } 
-  }
-
   componentWillUnmount() {
-    this.unloadFile()
+    this.setState({
+      playStatus: 'STOPPED'
+    })
   }
 
   render() {
@@ -147,13 +92,11 @@ class Tile extends Component {
           opacity: this.state.isDragging ? 0.7 : 1
         }}
       >
-        {/* { this.state.isPlaying &&
-           <Sound
-              playStatus={'PLAYING'}
+           <DelaySound
+              playStatus={this.state.playStatus}
               file={this.props.sound}
-              isSequential={false}
                   />
-        } */}
+        
         <Animated.View
           style={[
             this.state.position.getLayout(),
@@ -171,7 +114,7 @@ class Tile extends Component {
   }
 }
 
-export default Tile
+export default ReactTimeout(Tile)
 
 const styles = StyleSheet.create({
   empty: {
