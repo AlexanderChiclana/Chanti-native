@@ -31,7 +31,7 @@ const Space = props => {
   const calcStyle = () => {
     if (isPlaying) {
       return {
-        backgroundColor: colors.secondaryLight
+        backgroundColor: colors.secondary
       }
     } else if (hasPlayed) {
       return {

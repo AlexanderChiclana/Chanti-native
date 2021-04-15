@@ -1,492 +1,529 @@
+import React from 'react'
+import Svg, { Circle, Rect, Path } from 'react-native-svg'
+
 const systemsArr = [
-    {
-        name: 'Torah',
-        symbols: [
-            {
-                symbol: 'A',
-                sound: require('../assets/1-merekha.wav')
-            },
-            {
-                symbol: 'B',
-                sound: require('../assets/2-tipecha.wav')
-            },
-            {
-                symbol: 'C',
-                sound: require('../assets/3-munach.wav')
-            },
-            {
-                symbol: 'D',
-                sound: require('../assets/4-etnakhta.wav')
-            },
-            {
-                symbol: 'E',
-                sound: require('../assets/5-siluk.wav')
-            },
-            {
-                symbol: 'F',
-                sound: require('../assets/6-kadma.wav')
-            },
-            {
-                symbol: 'G',
-                sound: require('../assets/7-mapakh.wav')
-            },
-            {
-                symbol: 'H',
-                sound: require('../assets/8-pashta.wav')
-            },
-            {
-                symbol: 'I',
-                sound: require('../assets/9-zakef.wav')
-            },
-            {
-                symbol: 'J',
-                sound: require('../assets/10-kadma-v-geresh.wav')
-            },
-            {
-                symbol: 'K',
-                sound: require('../assets/11-gershayim.wav')
-            },
-            {
-                symbol: 'L',
-                sound: require('../assets/12-tevir.wav')
-            },
-            {
-                symbol: 'M',
-                sound: require('../assets/13-darga.wav')
-            },
-            {
-                symbol: 'N',
-                sound: require('../assets/14-zarka.wav')
-            },
-            {
-                symbol: 'O',
-                sound: require('../assets/15-segol.wav')
-            },
-            {
-                symbol: 'P',
-                sound: require('../assets/16-revia.wav')
-            },
-            {
-                symbol: 'Q',
-                sound: require('../assets/17-telisha-kitana.wav')
-            },
-            {
-                symbol: 'R',
-                sound: require('../assets/18-telisha-gedola.wav')
-            },
-            {
-                symbol: 'S',
-                sound: require('../assets/19-pazer.wav')
-            },
-        
-        ]
-    },
-    {
-        name: 'Haftarah',
-        symbols: [
-            {
-                symbol: 'A',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'B',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'C',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'D',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'E',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'F',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'G',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'H',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'I',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'J',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'K',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'L',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'M',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'N',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'O',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'P',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'Q',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'R',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'S',
-                sound: require('../assets/A.wav')
-            }
-        ]
-    },
-    {
-        name: 'HHD',
-        symbols: [
-            {
-                symbol: 'A',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'B',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'C',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'D',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'E',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'F',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'G',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'H',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'I',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'J',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'K',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'L',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'M',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'N',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'O',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'P',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'Q',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'R',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'S',
-                sound: require('../assets/A.wav')
-            }
-        ]
-    },
-    {
-        name: 'Ruth',
-        symbols: [
-            {
-                symbol: 'A',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'B',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'C',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'D',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'E',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'F',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'G',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'H',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'I',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'J',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'K',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'L',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'M',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'N',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'O',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'P',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'Q',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'R',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'S',
-                sound: require('../assets/A.wav')
-            }
-        ]
-    },
-    {
-        name: 'Esther',
-        symbols: [
-            {
-                symbol: 'A',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'B',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'C',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'D',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'E',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'F',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'G',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'H',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'I',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'J',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'K',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'L',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'M',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'N',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'O',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'P',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'Q',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'R',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'S',
-                sound: require('../assets/A.wav')
-            }
-        ]
-    },
-    {
-        name: 'Lamentation',
-        symbols: [
-            {
-                symbol: 'A',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'B',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'C',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'D',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'E',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'F',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'G',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'H',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'I',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'J',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'K',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'L',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'M',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'N',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'O',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'P',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'Q',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'R',
-                sound: require('../assets/A.wav')
-            },
-            {
-                symbol: 'S',
-                sound: require('../assets/A.wav')
-            }
-        ]
-    }
-    
+  {
+    name: 'Torah',
+    symbols: [
+      // {
+      //   symbol: (
+      //     <Svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       width={50}
+      //       height={50}
+      //       viewBox="0 0 941.757 1144.953"
+      //       stroke="#000"
+      //       fill="none"
+      //       strokeLinecap="round"
+      //       strokeLinejoin="round"
+      //     >
+      //       <Path
+      //         className="prefix__selected"
+      //         fill="#000"
+      //         d="M897.13 0c15.156 32.274 22.241 67.685 27.93 102.883 25.83 159.82 24.944 326.604-25.886 480.311-56.098 169.633-172.82 317.61-321.777 416.27-148.957 98.662-328.915 148.262-507.56 145.37L0 792.939c90.72-7.538 181.308-25.842 264.333-63.174 83.026-37.332 158.387-94.52 209.134-170.096 87.23-129.908 92.82-302.659 43.57-451.184L897.13 0z"
+      //         stroke="none"
+      //       />
+      //     </Svg>
+      //   ),
+      //   sound: require('../assets/1-merekha.wav')
+      // },
+      {
+        symbol: `
+          <Svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={50}
+            height={50}
+            viewBox="0 0 1299 1577"
+            stroke="#000"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <Path
+              className="prefix__selected"
+              fill="#000"
+              d="M61 0s.5 0 .75.25C64.333.333 66.667.167 69 0c.5 0 1 0 1.75.25 3.213 1.417 6.105 2.83 9.152 3.702 7.971 2.284 16.027 4.272 24.016 6.5 3.72 1.037 7.323 2.503 11.048 3.518 7.861 2.14 15.793 4.02 23.645 6.19 3.864 1.069 7.568 2.715 11.429 3.8 5.5 1.545 11.109 2.701 16.61 4.24 3.864 1.08 7.583 2.676 11.445 3.763 5.498 1.547 11.097 2.733 16.596 4.274 3.865 1.082 7.588 2.678 11.462 3.719 5.328 1.431 10.79 2.371 16.096 3.871 3.893 1.1 7.57 2.955 11.448 4.128 5.798 1.753 11.698 3.164 17.534 4.794 3.627 1.013 7.193 2.247 10.828 3.231 5.558 1.505 11.18 2.783 16.721 4.344 3.761 1.06 7.387 2.608 11.155 3.633 4.522 1.23 9.173 1.983 13.69 3.227 3.866 1.064 7.576 2.691 11.437 3.777 5.5 1.546 11.104 2.715 16.605 4.254 3.864 1.08 7.588 2.661 11.45 3.749 5.497 1.548 11.096 2.734 16.589 4.293 3.708 1.053 7.265 2.636 10.968 3.707 5.777 1.672 11.64 3.046 17.43 4.67 3.572 1.002 7.052 2.335 10.623 3.343 5.786 1.634 11.636 3.046 17.417 4.695 5.908 1.686 11.736 3.653 17.654 5.301 7.992 2.226 16.066 4.161 24.05 6.417 6.053 1.711 12 3.803 18.033 5.59 5.953 1.761 11.963 3.329 17.934 5.03 3.324.946 6.606 2.044 9.934 2.978 5.832 1.636 11.694 3.169 17.527 4.802 3.629 1.016 7.212 2.193 10.844 3.193 3.255.896 6.58 1.54 9.817 2.491 3.603 1.06 7.103 2.476 10.716 3.493 4.796 1.35 9.677 2.398 14.488 3.7 3.737 1.013 7.355 2.635 11.145 3.243 7.247 1.164 8.117 2.5 5.47 8.91-2.079 5.034-3.85 10.214-5.445 15.425-2.103 6.875-3.888 13.848-5.835 20.773-1.133 4.031-2.507 8.005-3.43 12.083-1.344 5.929-2.188 11.973-3.602 17.883-1.223 5.116-3.289 10.041-4.36 15.18-1.509 7.228-2.277 14.608-3.664 21.865-1.628 8.513-3.625 16.955-5.363 25.448-.521 2.545-.762 5.152-1.045 7.74-.38 3.47-.562 6.967-1.043 10.422-.53 3.8-1.475 7.546-1.924 11.352-.526 4.454-.597 8.96-1.076 13.42-.532 4.961-1.557 9.88-1.91 14.85-.555 7.793-.687 15.615-1.08 23.421-.135 2.676-.732 5.34-.73 8.008.002 2.721.858 5.468.676 8.159-.433 6.405-1.748 12.78-1.811 19.176-.098 9.857.534 19.722.892 29.582.305 8.42.701 16.836.975 25.257.115 3.553-.33 7.156.097 10.66.713 5.845 2.031 11.613 2.883 17.443.543 3.722.83 7.493 1.004 11.253.174 3.767-.4 7.621.184 11.306.919 5.798 3.55 11.481 3.573 17.22.025 6.12 1.587 11.675 2.917 17.416.499 2.152.825 4.346 1.16 6.532.632 4.137 1.003 8.327 1.879 12.41.83 3.869 2.356 7.586 3.233 11.448 1.096 4.823 1.602 9.786 2.807 14.577 1.068 4.246 2.97 8.28 4.098 12.516 1.691 6.346 2.566 12.94 4.62 19.153 3.443 10.415 7.555 20.608 11.359 30.904 3.028 8.197 5.735 16.525 9.09 24.585 4.333 10.405 8.863 20.753 13.879 30.842 4.584 9.22 9.885 18.09 14.954 27.065 3.616 6.404 7.346 12.744 11.077 19.082 1.597 2.713 3.34 5.34 4.996 8.018 5.37 8.693 10.492 17.552 16.186 26.026 3.151 4.69 7.434 8.604 10.88 13.118 4.28 5.607 8.063 11.595 12.373 17.177 2.223 2.878 5.324 5.064 7.672 7.862 5.78 6.886 10.987 14.287 17.097 20.854 8.83 9.489 18.075 18.615 27.488 27.531 6.796 6.437 14.246 12.178 21.227 18.427 3.967 3.552 7.298 7.846 11.416 11.19 5.637 4.577 11.842 8.446 17.636 12.84 7.768 5.89 15.22 12.205 23.102 17.932 6.435 4.675 13.302 8.756 19.98 13.097 6.655 4.325 13.254 8.74 19.986 12.942 6.56 4.094 13.241 7.991 19.896 11.93 7.805 4.618 15.609 9.24 23.471 13.76 4.543 2.612 9.165 5.093 13.815 7.51 6.216 3.233 12.407 6.532 18.763 9.467 9.743 4.498 19.544 8.887 29.46 12.985 7.404 3.06 15.072 5.473 22.543 8.379 10.074 3.918 19.973 8.301 30.127 11.99 11.449 4.16 23.098 7.77 34.66 11.62 3.071 1.023 6.094 2.237 9.224 3.027 5.412 1.364 10.919 2.35 16.333 3.707 5.708 1.431 11.329 3.211 17.034 4.656 7.276 1.843 14.624 3.407 21.894 5.274 5.102 1.31 10.071 3.16 15.198 4.34 5.278 1.216 10.71 1.756 16.013 2.876 7.538 1.593 14.967 3.755 22.545 5.095 6.524 1.154 13.225 1.274 19.785 2.27 5.194.789 10.289 2.233 15.436 3.344 2.51.542 5.02 1.173 7.564 1.443 5.786.614 11.617.849 17.385 1.586 4.084.522 8.078 1.71 12.144 2.418 2.89.503 5.826.775 8.752 1.016 4.804.396 9.632.545 14.422 1.057 4.468.478 8.88 1.517 13.352 1.906 6.29.547 12.616.672 18.92 1.088 1.544.102 3.388 1.358 4.531.84 4.91-2.223 8.768.498 12.899 2.126 0 0 0 .5-.25.75-1.417 4.716-2.785 9.142-3.7 13.659-1.203 5.94-1.934 11.974-3.09 17.925-.79 4.074-2.206 8.033-2.9 12.119-.973 5.716-1.265 11.555-2.362 17.242-.806 4.18-2.627 8.153-3.647 12.304-1.162 4.727-1.943 9.548-2.878 14.33-.402 2.058-.868 4.11-1.143 6.185-.548 4.132-.713 8.335-1.54 12.406-.851 4.191-2.555 8.208-3.419 12.397-.869 4.212-.938 8.587-1.773 12.809-.831 4.207-2.343 8.277-3.254 12.472-1.039 4.779-1.687 9.641-2.61 14.447-.728 3.792-1.718 7.536-2.41 11.335-1.089 5.965-1.908 11.98-3.064 17.931-.791 4.074-2.208 8.033-2.9 12.118-.97 5.72-1.25 11.56-2.346 17.25-.806 4.178-2.642 8.147-3.662 12.297-1.162 4.728-1.93 9.553-2.864 14.337-.402 2.058-.893 4.106-1.167 6.182-.545 4.133-.691 8.338-1.516 12.409-.85 4.19-2.57 8.202-3.433 12.39-.869 4.213-.924 8.592-1.758 12.815-.832 4.206-2.407 8.264-3.261 12.467-1.208 5.94-1.915 11.98-3.092 17.925-1.153 5.822-2.804 11.546-3.917 17.374-1.414 7.408-2.337 14.91-3.792 22.309-1.171 5.962-2.901 11.812-4.225 17.747-1.061 4.757-1.883 9.568-2.814 14.355-.4 2.057-.918 4.098-1.19 6.172-.542 4.135-.668 8.346-1.494 12.418-.848 4.188-2.591 8.194-3.455 12.38-.869 4.215-.901 8.601-1.736 12.826-.83 4.204-2.412 8.258-3.28 12.458-.866 4.201-1.035 8.547-1.904 12.748-1.562 7.546-3.851 14.972-4.877 22.578-.287 2.13-.398 2.146-1.984 2.144-13.334-.018-26.667-.04-40 .034-1.433.008-2.862.623-4.293.956-4.167 0-8.333 0-12.75-.25-6.392-.417-12.544-.426-18.674-.788-8.789-.519-17.564-1.264-26.34-1.991-1.545-.128-3.046-.846-4.589-.935-7.137-.414-14.284-.664-21.421-1.073-1.21-.07-2.377-.84-3.59-.927-5.803-.413-11.617-.672-17.422-1.06-1.336-.088-2.643-.586-3.98-.69-4.075-.317-8.188-.311-12.23-.853-4.084-.548-8.085-1.683-12.15-2.404a71.316 71.316 0 00-8.253-.994c-3.415-.201-6.855-.016-10.267-.248-2.409-.164-4.817-.625-7.177-1.165-3.383-.773-6.682-1.968-10.09-2.553-2.983-.512-6.121-.134-9.095-.675-5.013-.912-9.928-2.35-14.929-3.345-2.293-.456-4.71-.248-7.036-.582-4.039-.58-8.085-1.193-12.065-2.075-4.346-.964-8.579-2.464-12.94-3.328-3.916-.775-8-.721-11.898-1.557-3.864-.829-7.524-2.606-11.388-3.435-5.161-1.106-10.516-1.356-15.635-2.602-6.052-1.474-11.871-3.901-17.92-5.4-8.262-2.05-16.702-3.385-24.96-5.449-8.475-2.117-16.842-4.678-25.221-7.165-8.68-2.575-17.378-5.112-25.957-7.995-10.435-3.507-20.755-7.358-31.124-11.062-7.262-2.594-14.521-5.197-21.786-7.783-3.587-1.276-7.229-2.406-10.767-3.803-6.803-2.687-13.512-5.615-20.335-8.249-3.864-1.491-8-2.31-11.797-3.935-7.86-3.365-15.544-7.137-23.362-10.602-4.556-2.02-9.31-3.597-13.832-5.683-5.67-2.616-11.135-5.674-16.797-8.308-5.63-2.62-11.502-4.73-17.068-7.47-5.972-2.942-11.65-6.478-17.566-9.54-10.127-5.24-20.446-10.117-30.48-15.525-6.465-3.484-12.474-7.801-18.852-11.459-6.958-3.99-14.294-7.345-21.127-11.53-9.639-5.904-18.965-12.319-28.428-18.51-1.223-.8-2.508-1.51-3.694-2.359-3.52-2.52-6.888-5.274-10.534-7.591-4.373-2.78-9.16-4.928-13.427-7.848-5.569-3.812-10.69-8.272-16.21-12.161-6.11-4.305-12.594-8.082-18.639-12.47-3.703-2.69-6.741-6.28-10.346-9.126-3.436-2.713-7.348-4.82-10.82-7.493-4.543-3.497-8.796-7.367-13.286-10.935-5.858-4.655-11.868-9.119-17.732-13.766a423.15 423.15 0 01-12.828-10.596c-5.553-4.767-11.034-9.619-16.498-14.487-3.892-3.467-7.802-6.92-11.531-10.557a1168.01 1168.01 0 01-18.978-18.957 7722.72 7722.72 0 01-35.995-36.999c-4.817-4.985-9.401-10.198-14.248-15.154-2.376-2.43-5.432-4.236-7.62-6.803-5.723-6.713-11.11-13.712-16.684-20.554-6.115-7.508-12.293-14.963-18.433-22.45-4.467-5.45-8.861-10.96-13.394-16.354-2.833-3.372-6.153-6.366-8.745-9.903-5.447-7.432-10.55-15.114-15.81-22.684-4.406-6.344-8.875-12.644-13.238-19.017a1337.062 1337.062 0 01-12.794-19.039c-4.354-6.6-8.528-13.323-12.947-19.88-3.27-4.85-7.119-9.33-10.143-14.318-3.806-6.279-7.001-12.925-10.52-19.38-3.834-7.03-7.65-14.072-11.63-21.019-4.497-7.847-9.568-15.39-13.66-23.436-5.216-10.255-9.694-20.885-14.502-31.348a20950.49 20950.49 0 00-16.21-35.207c-3.458-7.487-7.224-14.845-10.336-22.472-2.204-5.398-3.382-11.206-5.313-16.728-2.177-6.228-4.744-12.319-7.028-18.51-1.469-3.982-2.692-8.054-4.1-12.06-2.653-7.551-5.519-15.033-7.999-22.64-2.52-7.729-4.542-15.619-7.046-23.352-1.605-4.954-3.786-9.718-5.514-14.635-.86-2.448-1.268-5.053-1.906-7.58-1.498-5.931-2.936-11.878-4.538-17.781-1.516-5.586-3.52-11.056-4.75-16.698-1.682-7.704-2.607-15.574-4.293-23.277-1.184-5.408-3.56-10.569-4.583-15.995-1.74-9.231-2.591-18.63-4.286-27.872-1.233-6.73-3.401-13.283-4.787-19.99-.55-2.665.107-5.557-.188-8.302-.305-2.846-1.052-5.65-1.689-8.454-.7-3.09-1.606-6.136-2.216-9.242-.501-2.553-.821-5.156-1.005-7.752-.25-3.55-.018-7.153-.505-10.662-.542-3.91-2.242-7.718-2.386-11.61-.215-5.766.577-11.568-2.103-17.023-.263-.536-.02-1.315-.032-1.98-.08-4.748.15-9.527-.33-14.233-.569-5.546-1.761-11.026-2.662-16.539-.08-.486.018-1-.016-1.497-.213-3.132-.434-6.263-.665-9.394-.095-1.288-.31-2.574-.315-3.862-.03-7.78-.002-15.56-.056-23.34-.003-.368-.878-.727-.885-1.1-.077-4.217.185-8.455-.137-12.65C1.53 469.57.667 464.292 0 459c0-4.5 0-9 .25-13.75.417-.68.729-1.11.73-1.54.023-19.808.031-39.614-.022-59.421C.956 383.525.333 382.763 0 382c0-4.5 0-9 .25-13.75.75-5.209 1.556-10.16 1.683-15.128.234-9.106.058-18.222.089-27.334.002-.598.398-1.184.468-1.793a4613.31 4613.31 0 002.499-22.131c.053-.477-.083-.973-.079-1.459.02-2.237-.06-4.483.126-6.706.157-1.876.738-3.715.937-5.59.245-2.324.247-4.672.438-7.002.116-1.423.49-2.828.57-4.25.28-5.015.266-10.056.777-15.045.47-4.601 1.48-9.147 2.231-13.72.08-.488-.007-1 .014-1.499.17-4.207.095-8.444.597-12.612.493-4.088 2.176-8.095 2.245-12.156.082-4.837.64-9.455 1.846-14.123.846-3.273.94-6.748 1.298-10.14.351-3.317.458-6.667.958-9.959.5-3.297 1.406-6.53 2.035-9.81.428-2.234.715-4.496 1.012-6.753.686-5.225 1.362-10.45 1.995-15.682.258-2.136.192-4.33.633-6.421.617-2.928 1.791-5.746 2.327-8.683.857-4.693 1.238-9.472 2.093-14.165.802-4.402 2.046-8.721 2.934-13.11.938-4.637 1.647-9.32 2.53-13.97.779-4.111 1.686-8.198 2.486-12.305.814-4.174 1.49-8.377 2.368-12.537.76-3.595 1.84-7.124 2.554-10.726.773-3.896 1.15-7.873 1.953-11.761.795-3.845 2-7.603 2.856-11.436.769-3.446 1.124-6.99 2.002-10.403.87-3.382 2.62-6.58 3.18-9.991 1.146-6.994 2.531-13.647 9.304-17.624C59.977 1.775 60.41.756 61 0z"
+              stroke="none"
+            />
+          </Svg>
+        `,
+        sound: require('../assets/2-tipecha.wav')
+      },
+      {
+        symbol: 'C',
+        sound: require('../assets/3-munach.wav')
+      },
+      {
+        symbol: 'D',
+        sound: require('../assets/4-etnakhta.wav')
+      },
+      {
+        symbol: 'E',
+        sound: require('../assets/5-siluk.wav')
+      },
+      {
+        symbol: 'F',
+        sound: require('../assets/6-kadma.wav')
+      },
+      {
+        symbol: 'G',
+        sound: require('../assets/7-mapakh.wav')
+      },
+      {
+        symbol: 'H',
+        sound: require('../assets/8-pashta.wav')
+      },
+      {
+        symbol: 'I',
+        sound: require('../assets/9-zakef.wav')
+      },
+      {
+        symbol: 'J',
+        sound: require('../assets/10-kadma-v-geresh.wav')
+      },
+      {
+        symbol: 'K',
+        sound: require('../assets/11-gershayim.wav')
+      },
+      {
+        symbol: 'L',
+        sound: require('../assets/12-tevir.wav')
+      },
+      {
+        symbol: 'M',
+        sound: require('../assets/13-darga.wav')
+      },
+      {
+        symbol: 'N',
+        sound: require('../assets/14-zarka.wav')
+      },
+      {
+        symbol: 'O',
+        sound: require('../assets/15-segol.wav')
+      },
+      {
+        symbol: 'P',
+        sound: require('../assets/16-revia.wav')
+      },
+      {
+        symbol: 'Q',
+        sound: require('../assets/17-telisha-kitana.wav')
+      },
+      {
+        symbol: 'R',
+        sound: require('../assets/18-telisha-gedola.wav')
+      },
+      {
+        symbol: 'S',
+        sound: require('../assets/19-pazer.wav')
+      }
+    ]
+  },
+  {
+    name: 'Haftarah',
+    symbols: [
+      {
+        symbol: 'A',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'B',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'C',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'D',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'E',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'F',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'G',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'H',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'I',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'J',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'K',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'L',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'M',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'N',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'O',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'P',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'Q',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'R',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'S',
+        sound: require('../assets/A.wav')
+      }
+    ]
+  },
+  {
+    name: 'HHD',
+    symbols: [
+      {
+        symbol: 'A',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'B',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'C',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'D',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'E',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'F',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'G',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'H',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'I',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'J',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'K',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'L',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'M',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'N',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'O',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'P',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'Q',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'R',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'S',
+        sound: require('../assets/A.wav')
+      }
+    ]
+  },
+  {
+    name: 'Ruth',
+    symbols: [
+      {
+        symbol: 'A',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'B',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'C',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'D',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'E',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'F',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'G',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'H',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'I',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'J',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'K',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'L',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'M',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'N',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'O',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'P',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'Q',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'R',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'S',
+        sound: require('../assets/A.wav')
+      }
+    ]
+  },
+  {
+    name: 'Esther',
+    symbols: [
+      {
+        symbol: 'A',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'B',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'C',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'D',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'E',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'F',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'G',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'H',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'I',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'J',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'K',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'L',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'M',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'N',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'O',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'P',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'Q',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'R',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'S',
+        sound: require('../assets/A.wav')
+      }
+    ]
+  },
+  {
+    name: 'Lamentation',
+    symbols: [
+      {
+        symbol: 'A',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'B',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'C',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'D',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'E',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'F',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'G',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'H',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'I',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'J',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'K',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'L',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'M',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'N',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'O',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'P',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'Q',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'R',
+        sound: require('../assets/A.wav')
+      },
+      {
+        symbol: 'S',
+        sound: require('../assets/A.wav')
+      }
+    ]
+  }
 ]
 
 export default systemsArr

@@ -39,7 +39,8 @@
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12",
     "react-timeout": "^2.0.0",
-    "tslib": "^2.0.3"
+    "tslib": "^2.0.3",
+    "react-native-svg": "12.1.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"
