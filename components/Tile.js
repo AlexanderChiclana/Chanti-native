@@ -5,8 +5,8 @@ import { tileSize, colors } from '../theme.js'
 
 import DelaySound from './DelaySound.js'
 import Svg, { Circle, Rect, Path } from 'react-native-svg'
-import Merekha from '../assets/1-merekha.svg'
-import tileSVG from '../data/graphics.js'
+// import Merekha from '../assets/1-merekha.svg'
+// import tileSVG from '../data/graphics.js'
 
 class Tile extends Component {
   constructor(props) {
@@ -60,14 +60,14 @@ class Tile extends Component {
       isDragging: false,
       playStatus: 'STOPPED',
       sound: null,
-      svg: null
+      // svg: null
     }
   }
 
   componentDidMount() {
-    this.setState({
-      svg: tileSVG['segol']
-    })
+    // this.setState({
+    //   svg: tileSVG['segol']
+    // })
   }
 
   stopPlay = () => {
@@ -108,9 +108,9 @@ class Tile extends Component {
           {...handles}
         >
           <View style={styles.container}>
-            <ImageBackground source={require('../assets/merekha-png.png')} style={{width: 50, height: 50 }}>
+            <ImageBackground source={this.props.symbol} style={{width: 50, height: 50 }}>
             <Text style={styles.letter}>
-            {/* {this.props.symbol} */}
+            {console.log(this.props.symbol)}
             {/* {tileSVG['merekha']} */}
             {/* {this.state.svg} */}
             
@@ -148,8 +148,8 @@ const styles = StyleSheet.create({
     height: tileSize.medium,
     width: tileSize.medium,
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: colors.primary
+    // borderWidth: 1,
+    // borderColor: colors.primary
   },
   letter: {
     fontSize: 30

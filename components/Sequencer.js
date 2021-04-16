@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ImageBackground } from 'react-native'
 import { colors, borders } from '../theme.js'
 import * as Animatable from 'react-native-animatable'
 
@@ -54,7 +54,12 @@ const Space = props => {
               ...calcStyle()
             }}
           >
-            <Text style={{ fontSize: 30 }}>{props.symbol}</Text>
+            <ImageBackground
+              source={props.symbol}
+              style={{ width: 40, height: 40 }}
+            >
+              {/* <Text style={{ fontSize: 30 }}>{props.symbol}</Text> */}
+            </ImageBackground>
           </View>
         </Animatable.View>
       )}

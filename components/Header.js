@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
     // borderBottomWidth: 3
   },
   title: {
-    fontSize: 20,
+    fontSize: 30,
+    fontFamily: 'Futura',
     color: 'white',
     fontWeight: '600'
   },

@@ -52,7 +52,7 @@ const TabView = ({ route }) => {
             color: 'red',
             backgroundColor: colors.primaryLight
           },
-          labelStyle: { fontSize: 12 },
+          labelStyle: { fontSize: 14, fontFamily: 'Futura' },
           style: { backgroundColor: colors.primary }
         }}
       >
